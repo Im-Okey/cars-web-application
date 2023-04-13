@@ -5,6 +5,9 @@
 </head>
 <body>
 <h4>Подробная информация о ${car.brand} ${car.model}</h4>
+<#list images as img>
+    <img src="/images/${img.id}" height="60px" alt=""><br><br>
+</#list>
 <b>Марка машины: ${car.brand}</b><br>
 <b>Модель машины: ${car.model}</b><br>
 <b>Цена: ${car.price}</b><br>

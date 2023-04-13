@@ -99,7 +99,7 @@
                                     <div class="item-ser__name">${car.brand} ${car.model}</div>
                                 </a>
                                 <div class="item-ser__img">
-                                    <img class="item-ser__evo" src="img\${"test.png"}" width="640" height="360"
+                                    <img class="item-ser__evo" src="/images/${car.images[0].id}" width="640" height="360"
                                          alt="">
                                 </div>
                                 <div class="item-ser__price">

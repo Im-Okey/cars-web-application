@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Images {
+public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,11 +19,11 @@ public class Images {
     private Long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "originalFileName")
+    @Column(name = "original_file_name")
     private String originalFileName;
-    @Column(name = "contentType")
+    @Column(name = "content_Type")
     private String contentType;
-    @Column(name = "isPreviewImage")
+    @Column(name = "is_Preview_Image")
     private boolean isPreviewImage;
     @Column(name = "size")
     private Long size;

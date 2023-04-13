@@ -36,12 +36,17 @@ public class Cars {
     private int year_of_manufacture;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cars")
-    private List<Images> images = new ArrayList<>();
+    private List<Image> images = new ArrayList<>();
     private Long previewImageId;
     private LocalDateTime dateOfCreated;
 
     @PrePersist
     private void init() {
         dateOfCreated = LocalDateTime.now();
+    }
+
+    public void addImageToCar(Image image) {
+        image.setCars(this);
+        images.add(image);
     }
 }
