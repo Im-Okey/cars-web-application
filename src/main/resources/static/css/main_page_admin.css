@@ -503,6 +503,13 @@ a:visited{
     font-weight: 700;
     margin-bottom: 20px;
 }
+
+.service__btn-group {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
 .service__row {
     display: flex;
     justify-content: space-between;
@@ -653,6 +660,10 @@ a:visited{
     transition: all 0.3s ease-out;
 }
 
+.btn-group {
+    padding-bottom: 50px;
+}
+
 div.service__add-link {
     height: 10em;
     position: relative }
@@ -665,6 +676,7 @@ div.service__add-link a {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%) }
+
 
 .footer {
     z-index: 5;
@@ -884,4 +896,9 @@ div.service__add-link a {
     .item-foot-soc {
         display: none;
     }
+}
+
+.service__description {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
 }

@@ -2,6 +2,7 @@
 <html lang="ru">
 
 <head>
+    <link rel="stylesheet" type="text/css" href="../static/css/main_page_admin.css"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
@@ -86,7 +87,10 @@
         <div class="container">
             <div class="service__body">
                 <div class="service__title">Машины</div>
-                <div class="service__description"></div>
+                <form action="/showroom" method="get">
+                    Поиск по названию: <input type="text" name="brand"><br>
+                    <input type="submit" value="поиск">
+                </form>
                 <div class="service__row">
                     <#list cars as car>
                         <div class="service__column">

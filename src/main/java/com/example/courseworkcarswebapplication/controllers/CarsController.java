@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -19,9 +20,8 @@ public class CarsController {
     }
 
     @GetMapping("/showroom")
-    public String get_main_page(Model model) {
-        List<Cars> cars = carsServices.findAll();
-        model.addAttribute("cars", cars);
+    public String get_main_page(@RequestParam(name = "brand", required = false) String brand, Model model) {
+        model.addAttribute("cars", carsServices.findCars(brand));
         return "main_page_admin";
     }
     @GetMapping("/cars/add")
