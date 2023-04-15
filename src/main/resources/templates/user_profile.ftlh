@@ -47,131 +47,17 @@
         </div>
     </header>
 
-
-        <!-- Modal -->
-    <div class="modal fade" id="authorisationModal" tabindex="-1" aria-labelledby="authorisationLabel">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="authorisationLabel">Form</h5>
-                    <button class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-                </div>
-                <div class="modal-body">
-
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
-        <!-- Modal -->
-
     <div class="main">
         <div class="main__main-block main-block">
             <div class="main-block__container container">
                 <div class="main-block__body">
-                    <div class="main-block__title" id="headerr">
-                        <h1>Lorem ipsum dolor.</h1>
-                    </div>
-                    <div class="main-block__subtitle">
-                        <p>Lorem ipsum.</p>
-                        <p>Lorem ipsum.</p>
-                    </div>
-                    <div class="main-block__subtitle-tel">
-                        <a href="tel:+375298080706" class="nomer">+375(29)808-07-06</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <#-- <h4>Подробная информация о ${user.name} ${user.surname}</h4> -->
+ <#--                    <#list images as img>-->
+<#--                        <img src="/images/${img.id}" height="70px" alt=""><br><br>-->
+<#--                    </#list>-->
+                    <b>Мыло: ${user.email}</b><br>
+                    <b>Пароль: ${user.password}</b><br>
 
-    <div class="service" id="services">
-        <div class="container">
-            <div class="service__body">
-                <div class="service__title">Машины</div>
-
-                <form action="/showroom/${user.id}" method="get">
-                    Поиск по названию: <input type="text" name="brand"><br>
-                    <input type="submit" value="поиск">
-                </form>
-                <div class="service__row">
-                    <#list cars as car>
-                        <div class="service__column">
-                            <div class="service__item-ser item-ser">
-                                <a href="/cars/info/${car.id}/${user.id}">
-                                    <div class="item-ser__name">${car.brand} ${car.model}</div>
-                                </a>
-                                <div class="item-ser__img">
-                                    <img src="/images/${car.images[0].id}" height="10px"
-                                         alt="">
-                                </div>
-                                <div class="item-ser__price">
-                                    ${car.price}$
-                                </div>
-                                <div class="item-ser__list">
-                                    <p>2018, Бензин 1,4 л, 53004 км, Автомат, Передний, Седан, Черный...</p>
-                                </div>
-                                <#assign adminRole=user.adminRole!"null"/>
-                                <#if  adminRole == false>
-                                    <button class="btn btn-primary">Buy</button>
-                                </#if>
-                                <#if  adminRole == true>
-                                    <button class="btn btn-primary">Редактировать</button>
-                                    <form action="/cars/delete/${car.id}/${user.id}" method="post">
-                                        <input class="btn btn-primary" type="submit" value="Удалить">
-                                    </form>
-                                </#if>
-                            </div>
-                        </div>
-                    </#list>
-                </div>
-                <#assign adminRole=user.adminRole!"null"/>
-                <#if  adminRole == true>
-                    <div class="service__add-link">
-                        <a href="cars/add/${user.id}"><p>Добавить машину</p></a>
-                    </div>
-                </#if>
-            </div>
-        </div>
-    </div>
-
-    <div class="about">
-        <div class="about-block__container container">
-            <div class="about__about-block about-block">
-                <div class="about-block__description description">
-                    <div class="description__title" id="about">О нас</div>
-                    <div class=" description__subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Eligendi eveniet illum officia ratione! Ad aliquam amet asperiores at consequatur debitis
-                        dolor est ex fugit ipsam maxime provident sit, soluta sunt tempora, ullam vel. Ab beatae ex
-                        incidunt libero magni maxime nihil recusandae rem? Accusamus ad aliquam beatae commodi debitis
-                        dolorum eaque eius eos esse excepturi explicabo harum laudantium minima nostrum nulla pariatur
-                        quam recusandae, reprehenderit sapiente temporibus totam ullam unde. Eius in iste mollitia
-                        natus odit quasi quisquam reprehenderit totam!</div>
-                </div>
-                <div class="about-block__image">
-                    <img src="#" alt="">
-                </div>
-                <div class="about-block__benefits benefits">
-                    <div class="benefits__row">
-                        <div class="benefits__column">
-                            <#list [1, 2, 3, 4] as item>
-                                <div class="benefits__item item">
-                                    <div class="item__row">
-                                        <div class="item__image">
-                                            <img src="/img/${"test.png"}" width="80" height="100" alt="">
-                                        </div>
-                                        <div class="item__text">
-                                            <div class="item__title">Гарантия качества</div>
-                                            <div class="item__line"></div>
-                                            <div class="item__subtitle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </#list>
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>

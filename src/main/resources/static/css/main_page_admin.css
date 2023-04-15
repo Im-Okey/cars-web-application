@@ -538,54 +538,38 @@ a:visited{
     }
 }
 
+
 .item-ser__img {
-    max-width: 100%;
-    min-height: 100%;
+    max-width: 90%;
+    min-height: 90%;
     object-position: center;
     margin-bottom: 20px;
 }
 .item-ser__img img {
-    max-width: 100%;
-    min-height: 100%;
-    width: 370px;
-    height: 300px;
+    max-width: 90%;
+    min-height: 90%;
 }
-@media (max-width: 450px) {
-    .item-ser__img img {
-        height: 250px;
-    }
-}
-@media (max-width: 400px) {
-    .item-ser__img img {
-        height: 230px;
-    }
-}
-@media (max-width: 350px) {
-    .item-ser__img img {
-        height: 200px;
-    }
-}
-@media (max-width: 320px) {
-    .item-ser__img img {
-        height: 190px;
-    }
-}
-.item-ser__img .item-ser__eks {
-    width: 450px;
-}
-.item-ser__img .item-ser__pogruzchik {
-    width: 350px;
-}
-.item-ser__img .item-ser__bur {
-    margin-bottom: 15px;
-}
-.item-ser__img .item-ser__snow {
-    margin-bottom: 15px;
-    width: 450px;
-}
-.item-ser__img .item-ser__vili {
-    width: 500px;
-}
+/*@media (max-width: 450px) {*/
+/*    .item-ser__img img {*/
+/*        height: 250px;*/
+/*    }*/
+/*}*/
+/*@media (max-width: 400px) {*/
+/*    .item-ser__img img {*/
+/*        height: 230px;*/
+/*    }*/
+/*}*/
+/*@media (max-width: 350px) {*/
+/*    .item-ser__img img {*/
+/*        height: 200px;*/
+/*    }*/
+/*}*/
+/*@media (max-width: 320px) {*/
+/*    .item-ser__img img {*/
+/*        height: 190px;*/
+/*    }*/
+/*}*/
+
 .item-ser__name {
     max-width: 400px;
     margin: 0px auto;
@@ -901,4 +885,8 @@ div.service__add-link a {
 .service__description {
     margin-bottom: 50px;
     padding-bottom: 50px;
+}
+
+.item-ser {
+    height: 70%;
 }

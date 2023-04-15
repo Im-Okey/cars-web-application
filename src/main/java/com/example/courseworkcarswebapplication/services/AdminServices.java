@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 public class AdminServices {
     private final AdminRepository adminRepository;
 
-    public void check_admin(String login, String password) {
-        System.out.println(adminRepository.findAdminByLoginAndPassword(login, password));
+    public void check_admin(String email) {
+        System.out.println(adminRepository.findAdminByEmail(email));
 
     }
 }

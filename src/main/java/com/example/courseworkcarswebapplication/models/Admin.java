@@ -17,15 +17,13 @@ public class Admin {
     @Column(name = "id")
     private Long id;
     @Column(name = "name")
-    String name;
+    private String name;
     @Column(name = "surname")
-    String surname;
+    private String surname;
     @Column(name = "phone")
-    String phone;
+    private String phone;
     @Column(name = "email")
-    String email;
-    @Column(name = "login")
-    String login;
+    private String email;
     @Column(name = "password")
-    String password;
+    private String password;
 }

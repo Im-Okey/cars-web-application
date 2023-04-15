@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Авторизация</title>
+    <title>Регистрация</title>
     <link rel="stylesheet" href="css/${"authorisation.css"}">
 </head>
 <body>
 
 <div class="form">
-    <h1>Авторизация</h1>
-    <form action="/authorisation" method="post" enctype="multipart/form-data">
+    <h1>Регистрация</h1>
+    <form action="/registration" method="post" enctype="multipart/form-data">
         <div class="input-form">
             <input type="email" placeholder="Логин" name="email">
         </div>
@@ -17,9 +17,9 @@
             <input type="password" placeholder="Пароль" name="password">
         </div>
         <div class="input-form">
-            <input type="submit" value="Войти">
+            <input type="submit" value="Зарегестрироваться">
         </div>
-        <a href="/registration">Регистрация</a>
+        <a href="/authorisation">Войти</a>
     </form>
 </div>
 
