@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
-    <title>Название автосалона</title>
+    <title>Создание</title>
     <meta name="description"
           content="Аренда мини-экскаватора и мини-погрузчика с оператором в Полоцке и Новополоцке. Выполняем широкий спектр земляных работ. Доставку осуществляем своим транспортом" />
     <meta name="keywords"
@@ -38,7 +38,7 @@
                         <#if  adminRole == false>
                             <li><a href="user/${user.id}">${user.email}</a></li>
                         </#if>
-                        <li><form action="/registration" target="_blank">
+                        <li><form action="/authorisation" target="_blank">
                                 <button class="btn btn-outline-danger ms-1">Log out</button>
                             </form></li>
                     </ul>
@@ -47,18 +47,22 @@
         </div>
     </header>
 
-    <div class="main">
-        <div class="main__main-block main-block">
-            <div class="main-block__container container">
-                <div class="main-block__body">
-                    <#-- <h4>Подробная информация о ${user.name} ${user.surname}</h4> -->
- <#--                    <#list images as img>-->
-<#--                        <img src="/images/${img.id}" height="70px" alt=""><br><br>-->
-<#--                    </#list>-->
-                    <b>Мыло: ${user.email}</b><br>
-                    <b>Пароль: ${user.password}</b><br>
-
-                </div>
+    <div class="service" id="services">
+        <div class="container">
+            <div class="service__body" style="margin-top: 100px">
+                <form action="/showroom/cars/${user.id}/${car.id}/edit" method="post" enctype="multipart/form-data">
+                    Идитентификатор: <input readonly type="text" value="${car.id}" name="brand"><br><br>
+                    Марка машины: <input type="text" value="${car.brand}" name="brand"><br><br>
+                    Модель машины: <input type="text" value="${car.model}" name="model"><br><br>
+                    Цена: <input type="number" placeholder="${car.price}" name="price"><br><br>
+                    Комплектация: <input type="text" value="${car.equipment}" name="equipment"><br><br>
+                    Краткое описание: <input type="text" value="${car.description}" name="description"><br><br>
+                    Год выпуска: <input type="number" placeholder="${car.year_of_manufacture}" name="year_of_manufacture"><br><br>
+                    Превое фото: <input type="file" name="file1"><br><br>
+                    Второе фото: <input type="file" name="file2"><br><br>
+                    Третье фото: <input type="file" name="file3"><br><br>
+                    <input type="submit" value="Подтвердить редактирование">
+                </form>
             </div>
         </div>
     </div>

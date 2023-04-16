@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
-    <title>Информация</title>
+    <title>Создание</title>
     <meta name="description"
           content="Аренда мини-экскаватора и мини-погрузчика с оператором в Полоцке и Новополоцке. Выполняем широкий спектр земляных работ. Доставку осуществляем своим транспортом" />
     <meta name="keywords"
@@ -38,7 +38,7 @@
                         <#if  adminRole == false>
                             <li><a href="user/${user.id}">${user.email}</a></li>
                         </#if>
-                        <li><form action="/registration" target="_blank">
+                        <li><form action="/authorisation" target="_blank">
                                 <button class="btn btn-outline-danger ms-1">Log out</button>
                             </form></li>
                     </ul>
@@ -47,26 +47,21 @@
         </div>
     </header>
 
-    <div class="main">
-        <div class="main__main-block main-block">
-            <div class="main-block__container container">
-                <div class="main-block__body">
-                    <h4>Подробная информация о ${car.brand} ${car.model}</h4>
-                    <#list images as img>
-                        <img src="/images/${img.id}" height="70px" alt=""><br><br>
-                    </#list>
-                    <b>Марка машины: ${car.brand}</b><br>
-                    <b>Модель машины: ${car.model}</b><br>
-                    <b>Цена: ${car.price}</b><br>
-                    <b>Комплектация: ${car.equipment}</b><br>
-                    <b>Краткое описание: ${car.description}</b><br>
-                    <b>Год выпуска: ${car.year_of_manufacture}</b><br>
-                    нужно разобраться с картинками
-
-                    <form action="/cars/delete/${car.id}/${user.id}" method="post">
-                        <input type="submit" value="Удалить машину">
-                    </form>
-                </div>
+    <div class="service" id="services">
+        <div class="container">
+            <div class="service__body" style="margin-top: 100px">
+                <form action="/showroom/cars/add/${user.id}" method="post" enctype="multipart/form-data">
+                    Марка машины: <input type="text" name="brand"><br><br>
+                    Модель машины: <input type="text" name="model"><br><br>
+                    Цена: <input type="number" name="price"><br><br>
+                    Комплектация: <input type="text" name="equipment"><br><br>
+                    Краткое описание: <input type="text" name="description"><br><br>
+                    Год выпуска: <input type="number" name="year_of_manufacture"><br><br>
+                    Превое фото: <input type="file" name="file1"><br><br>
+                    Второе фото: <input type="file" name="file2"><br><br>
+                    Третье фото: <input type="file" name="file3"><br><br>
+                    <input type="submit" value="Добавить машину">
+                </form>
             </div>
         </div>
     </div>

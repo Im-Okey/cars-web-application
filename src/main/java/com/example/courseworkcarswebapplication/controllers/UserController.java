@@ -1,8 +1,6 @@
 package com.example.courseworkcarswebapplication.controllers;
 
 import com.example.courseworkcarswebapplication.models.User;
-import com.example.courseworkcarswebapplication.repositories.AdminRepository;
-import com.example.courseworkcarswebapplication.repositories.UserRepository;
 import com.example.courseworkcarswebapplication.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,7 +17,7 @@ public class UserController {
 
     @GetMapping("/registration")
     public String registration_form() {
-        return "registration";
+        return "reg_auth/registration";
     }
 
     @PostMapping("/registration")
@@ -31,7 +29,7 @@ public class UserController {
 
     @GetMapping("/authorisation")
     public String authorisation_form() {
-        return "authorisation";
+        return "reg_auth/authorisation";
     }
     @PostMapping("/authorisation")
     public String authorisation(User user) {
@@ -43,6 +41,6 @@ public class UserController {
     public String user_profile(@PathVariable Long user_id, Model model) {
         User user = userService.findById(user_id);
         model.addAttribute("user", user);
-        return "user_profile";
+        return "users/user_profile";
     }
 }

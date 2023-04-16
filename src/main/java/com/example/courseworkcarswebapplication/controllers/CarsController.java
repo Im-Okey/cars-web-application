@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,12 +26,28 @@ public class CarsController {
 
         User user = userService.findById(admin_id);
         model.addAttribute("user", user);
-        return "cars-create";
+        return "cars/cars-create";
     }
-
     @PostMapping("/showroom/cars/add/{admin_id}")
     public String addCar(@RequestParam("file1") MultipartFile file1, @RequestParam("file2") MultipartFile file2,
                          @RequestParam("file3") MultipartFile file3, Cars car, @PathVariable Long admin_id) throws IOException {
+        carsServices.saveCar(car, file1, file2, file3);
+        return "redirect:/showroom/" + admin_id;
+    }
+
+    @GetMapping("cars/edit/{id}/{admin_id}")
+    public String createCarFormEdit(Model model, @PathVariable Long id, @PathVariable Long admin_id) {
+
+        User user = userService.findById(admin_id);
+        Cars car = carsServices.findById(id);
+        model.addAttribute("user", user);
+        model.addAttribute("car", car);
+        return "cars/car-edit";
+    }
+    @PostMapping("/showroom/cars/{admin_id}/{car_id}/edit")
+    public String editCar(@RequestParam("file1") MultipartFile file1, @RequestParam("file2") MultipartFile file2,
+                          @RequestParam("file3") MultipartFile file3, Cars car, @PathVariable Long admin_id, @PathVariable Long car_id) throws IOException {
+        car.setId(car_id);
         carsServices.saveCar(car, file1, file2, file3);
         return "redirect:/showroom/" + admin_id;
     }
@@ -52,6 +67,6 @@ public class CarsController {
         model.addAttribute("car", car);
         model.addAttribute("user", user);
         model.addAttribute("images", car.getImages());
-        return "car-info";
+        return "cars/car-info";
     }
 }

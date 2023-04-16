@@ -35,7 +35,7 @@ public class Cars {
     @Column(name = "year_of_manufacture")
     private int year_of_manufacture;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cars")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cars", orphanRemoval = true)
     private List<Image> images = new ArrayList<>();
     private Long previewImageId;
     private LocalDateTime dateOfCreated;
