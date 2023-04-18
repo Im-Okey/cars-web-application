@@ -38,6 +38,10 @@
                         <#if  adminRole == false>
                             <li><a href="user/${user.id}">${user.email}</a></li>
                         </#if>
+                        <#assign adminRole=user.adminRole!"null"/>
+                        <#if  adminRole == true>
+                            <li><a href="admin/${user.id}">Админ</a></li>
+                        </#if>
                         <button class="btn btn-outline-danger ms-1"><a href="/authorisation">Log out</a></button>
                     </ul>
                 </nav>

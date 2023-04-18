@@ -31,9 +31,9 @@
                 </div>
                 <nav class="header__menu">
                     <ul class="header__list">
-                        <li><a href="#headerr">Главная</a></li>
-                        <li><a href="#services">Услуги</a></li>
-                        <li><a href="#about">О нас</a></li>
+                        <li><a href="/showroom/${user.id}">Главная</a></li>
+                        <li><a href="/showroom/${user.id}#services">Услуги</a></li>
+                        <li><a href="/showroom/${user.id}#about">О нас</a></li>
                         <#assign adminRole=user.adminRole!"null"/>
                         <#if  adminRole == false>
                             <li><a href="user/${user.id}">${user.email}</a></li>
@@ -84,9 +84,9 @@
                             <div class="item-foot-left__line"></div>
                             <div class="item-foot-left__list">
                                 <ul>
-                                    <li><a href="#headerr">Главная</a></li>
-                                    <li><a href="#services">Услуги</a></li>
-                                    <li><a href="#about">О нас</a></li>
+                                    <li><a href="/showroom/${user.id}">Главная</a></li>
+                                    <li><a href="/showroom/${user.id}#services">Услуги</a></li>
+                                    <li><a href="/showroom/${user.id}#about">О нас</a></li>
                                 </ul>
                             </div>
                         </div>

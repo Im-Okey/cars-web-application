@@ -31,14 +31,14 @@
                 </div>
                 <nav class="header__menu">
                     <ul class="header__list">
-                        <li><a href="#headerr">Главная</a></li>
-                        <li><a href="#services">Услуги</a></li>
-                        <li><a href="#about">О нас</a></li>
+                        <li><a href="/showroom/${user.id}">Главная</a></li>
+                        <li><a href="/showroom/${user.id}#services">Услуги</a></li>
+                        <li><a href="/showroom/${user.id}#about">О нас</a></li>
                         <#assign adminRole=user.adminRole!"null"/>
                         <#if  adminRole == false>
                             <li><a href="user/${user.id}">${user.email}</a></li>
                         </#if>
-                        <li><form action="/registration" target="_blank">
+                        <li><form action="/authorisation" target="_blank">
                                 <button class="btn btn-outline-danger ms-1">Log out</button>
                             </form></li>
                     </ul>
@@ -49,13 +49,18 @@
 
     <div class="service" id="services">
         <div class="container">
-            <div class="service__body">
-                <#-- <h4>Подробная информация о ${user.name} ${user.surname}</h4> -->
-                <#--                    <#list images as img>-->
-                <#--                        <img src="/images/${img.id}" height="70px" alt=""><br><br>-->
-                <#--                    </#list>-->
-                <h2 style="margin-top: 100px">Мыло: ${user.email}</h2><br>
-                <h2>Пароль: ${user.password}</h2><br>
+            <div class="service__body" style="margin-top: 100px">
+                <form action="/showroom/profile/${user.id}/edit" method="post">
+                    E-mail: <input readonly type="text" value="${user.email}" name="email"><br><br>
+                    Имя: <input type="text" value="${user.name}" name="name"><br><br>
+                    Фамилия: <input type="text" value="${user.surname}" name="surname"><br><br>
+                    Контактный телефон: <input type="text" placeholder="${user.phone}" name="phone"><br><br>
+                    Адрес: <input type="text" value="${user.address}" name="address"><br><br>
+                    Серия паспорта: <input type="text" value="${user.pasport_serial}" name="pasport_serial"><br><br>
+                    Номер паспорта: <input type="text" value="${user.pasport_number}" name="pasport_number"><br><br>
+                    <input type="submit" value="Редактировать профиль">
+                </form>
+                Дата последнего редактирования профиля: ${user.dateOfCreated}
             </div>
         </div>
     </div>
@@ -72,9 +77,9 @@
                             <div class="item-foot-left__line"></div>
                             <div class="item-foot-left__list">
                                 <ul>
-                                    <li><a href="#headerr">Главная</a></li>
-                                    <li><a href="#services">Услуги</a></li>
-                                    <li><a href="#about">О нас</a></li>
+                                    <li><a href="/showroom/${user.id}">Главная</a></li>
+                                    <li><a href="/showroom/${user.id}#services">Услуги</a></li>
+                                    <li><a href="/showroom/${user.id}#about">О нас</a></li>
                                 </ul>
                             </div>
                         </div>
