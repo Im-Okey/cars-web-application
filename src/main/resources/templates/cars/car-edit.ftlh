@@ -23,7 +23,7 @@
                 <div class="header__logo logo">
                     <img class="logo__img" src="img/${"test.png"}" alt="">
                     <div class="logo__a">
-                        <a class="logo__a1" href="">Мотосалон</a>
+                        <a class="logo__a1" href="">Автосалон</a>
                     </div>
                 </div>
                 <div class="header__burger">
@@ -51,7 +51,7 @@
         <div class="container">
             <div class="service__body" style="margin-top: 100px">
                 <form action="/showroom/cars/${user.id}/${car.id}/edit" method="post" enctype="multipart/form-data">
-                    Идитентификатор: <input readonly type="text" value="${car.id}" name="brand"><br><br>
+                    Идитентификатор: <input readonly type="text" value="${car.id}" name="id"><br><br>
                     Марка машины: <input type="text" value="${car.brand}" name="brand"><br><br>
                     Модель машины: <input type="text" value="${car.model}" name="model"><br><br>
                     Цена: <input type="number" placeholder="${car.price}" name="price"><br><br>

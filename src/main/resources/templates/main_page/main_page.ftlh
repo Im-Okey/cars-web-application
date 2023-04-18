@@ -23,7 +23,7 @@
                 <div class="header__logo logo">
                     <img class="logo__img" src="img/${"test.png"}" alt="">
                     <div class="logo__a">
-                        <a class="logo__a1" href="">Мотосалон</a>
+                        <a class="logo__a1" href="">Автосалон</a>
                     </div>
                 </div>
                 <div class="header__burger">

@@ -66,4 +66,13 @@ public class UserController {
         userService.save(user);
         return "redirect:/showroom/" + user_id;
     }
+
+
+    @GetMapping("/showroom/admin/{user_id}")
+    public String admin_profile(@PathVariable Long user_id, Model model) {
+        User user = userService.findById(user_id);
+        model.addAttribute("admin", user);
+        model.addAttribute("users", userService.findAll());
+        return "users/admin_profile";
+    }
 }

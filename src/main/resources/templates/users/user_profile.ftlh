@@ -23,7 +23,7 @@
                 <div class="header__logo logo">
                     <img class="logo__img" src="img/${"test.png"}" alt="">
                     <div class="logo__a">
-                        <a class="logo__a1" href="">Мотосалон</a>
+                        <a class="logo__a1" href="">Автосалон</a>
                     </div>
                 </div>
                 <div class="header__burger">
@@ -52,6 +52,7 @@
             <div class="service__body" style="margin-top: 100px">
                 <form action="/showroom/profile/${user.id}/edit" method="post">
                     E-mail: <input readonly type="text" value="${user.email}" name="email"><br><br>
+                    Имя: <input type="text" value="${user.password}" name="password"><br><br>
                     Имя: <input type="text" value="${user.name}" name="name"><br><br>
                     Фамилия: <input type="text" value="${user.surname}" name="surname"><br><br>
                     Контактный телефон: <input type="text" placeholder="${user.phone}" name="phone"><br><br>

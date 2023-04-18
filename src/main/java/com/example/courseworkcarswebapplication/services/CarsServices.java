@@ -19,7 +19,8 @@ public class CarsServices {
     private final CarsRepository carsRepository;
 
     public List<Cars> findCars(String brand){
-        if (brand != null) return carsRepository.findCarsByBrand(brand);
+        if (brand == null) return carsRepository.findAll();
+        if (brand.length() >= 1) return carsRepository.findCarsByBrand(brand);
         return  carsRepository.findAll();
     }
     public Cars saveCar(Cars car, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
