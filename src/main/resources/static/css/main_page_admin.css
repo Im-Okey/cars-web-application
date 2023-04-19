@@ -72,6 +72,7 @@ button::-moz-focus-inner {
 
 a, a:visited {
     text-decoration: none;
+    color: white;
 }
 
 a:hover {
@@ -423,12 +424,21 @@ a:visited{
 
 .about {
     background-color: #161616;
+    padding-bottom: 100px;
 }
 
 .about-block {
     padding-top: 50px;
     padding: 0px 15px;
+    padding-bottom: 100px;
 }
+.user-block {
+}
+
+.buttons {
+    display: flex;
+}
+
 .description {
     color: #fff;
     line-height: 24px;

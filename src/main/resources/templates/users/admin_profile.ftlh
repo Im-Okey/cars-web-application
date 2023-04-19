@@ -50,16 +50,18 @@
     <div class="service" id="services">
         <div class="container">
             <div class="service__body" style="margin-top: 100px">
-                <form action="/showroom/profile/${admin.id}/edit" method="post">
-                    E-mail: <input readonly type="text" value="${admin.email}" name="email"><br><br>
-                    Пароль: <input type="text" value="${admin.password}" name="password"><br><br>
-                    Имя: <input type="text" value="${admin.name}" name="name"><br><br>
-                    Фамилия: <input type="text" value="${admin.surname}" name="surname"><br><br>
-                    Контактный телефон: <input type="text" placeholder="${admin.phone}" name="phone"><br><br>
-                    Адрес: <input type="text" value="${admin.address}" name="address"><br><br>
-                    Серия паспорта: <input type="text" value="${admin.pasport_serial}" name="pasport_serial"><br><br>
-                    Номер паспорта: <input type="text" value="${admin.pasport_number}" name="pasport_number"><br><br>
-                    <input type="submit" value="Редактировать профиль">
+
+                <form class="form-group" action="/showroom/profile/${admin.id}/edit" method="post" style="font-size: 20px">
+                    <label for="exampleFormControlInput1">Email address</label>
+                    <input readonly type="email" class="form-control" value="${admin.email}" id="exampleFormControlInput1" name="email"><br>
+                    Password <input type="text" class="form-control" value="${admin.password}" name="password"><br>
+                    Name <input type="text" class="form-control" value="${admin.name}" name="name"><br>
+                    Surname <input type="text" class="form-control" value="${admin.surname}" name="surname"><br>
+                    Phone <input type="text" class="form-control" placeholder="${admin.phone}" name="phone"><br>
+                    Address <input type="text" class="form-control" value="${admin.address}" name="address"><br>
+                    Passport series <input type="text" class="form-control" value="${admin.pasport_serial}" name="pasport_serial"><br>
+                    Passport number: <input type="text" class="form-control" value="${admin.pasport_number}" name="pasport_number"><br>
+                    <input class="btn btn-primary" type="submit" value="Редактировать профиль">
                 </form>
                 Дата последнего редактирования профиля: ${admin.dateOfCreated}
             </div>
@@ -69,9 +71,40 @@
     <div class="about">
         <div class="about-block__container container">
             <div class="about__about-block about-block" style="color: white">
-                <#list users as user>
-                    ${user.email} ${user.password}<br><br>
-                </#list>
+                <div class="about__about-block user-block">
+                    <div class="user-block user-block-row">
+                        <#list users as user>
+                            <div class="user-block user-info" style="font-size: 24px">
+                                <br><br>
+                                ${user.name}  ${user.surname}<br>
+                                ${user.address}<br>
+                                ${user.phone}<br>
+                                ${user.pasport_number} ${user.pasport_serial}<br><br>
+                                LOGIN: ${user.email}  PASSWORD: ${user.password}<br>
+                                Дата регистрации: ${user.dateOfCreated}<br>
+                                <#assign status=user.isBlockedStatus!"null"/>
+                                <#if  status == false>
+                                    Статус: Профиль активен
+                                </#if>
+                                <#if  status == true>
+                                    Статус: Профиль заблокирован
+                                </#if>
+                                <br><br>
+                            </div>
+                            <div class="user-block buttons">
+                                <div class="user-block delete_btn1" style="padding-right: 20px">
+                                    <form action="/user/delete/${user.id}/${admin.id}" method="post">
+                                        <input class="btn btn-primary" type="submit" value="Удалить">
+                                    </form>
+                                </div>
+                                    <form action="/user/blocked/${user.id}/${admin.id}" method="post">
+                                        <input class="btn btn-primary" type="submit" value="Заблокировать">
+                                    </form>
+                            </div>
+                            <hr>
+                        </#list>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

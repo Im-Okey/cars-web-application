@@ -75,4 +75,19 @@ public class UserController {
         model.addAttribute("users", userService.findAll());
         return "users/admin_profile";
     }
+
+    @PostMapping("/user/delete/{user_id}/{admin_id}")
+    public String deleteUser(@PathVariable Long user_id, @PathVariable Long admin_id) {
+        userService.deleteById(user_id);
+        return "redirect:/showroom/admin/" + admin_id;
+    }
+
+    @PostMapping("/user/blocked/{user_id}/{admin_id}")
+    public String blockUser(@PathVariable Long user_id, @PathVariable Long admin_id) {
+        User user = userService.findById(user_id);
+        user.setIsBlockedStatus(true);
+        user.setId(user_id);
+        userService.save_user(user);
+        return "redirect:/showroom/admin/" + admin_id;
+    }
 }
