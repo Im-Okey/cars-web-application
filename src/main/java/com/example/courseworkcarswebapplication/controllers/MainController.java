@@ -1,6 +1,7 @@
 package com.example.courseworkcarswebapplication.controllers;
 
 import com.example.courseworkcarswebapplication.services.CarsServices;
+import com.example.courseworkcarswebapplication.services.CurrencyService;
 import com.example.courseworkcarswebapplication.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,7 @@ public class MainController {
 
     private final UserService userService;
     private final CarsServices carsServices;
-
-
+    private final CurrencyService currencyService;
 
     @GetMapping("/showroom/{id}")
     public String get_main_page(@RequestParam(name = "brand", required = false) String brand,
@@ -24,6 +24,7 @@ public class MainController {
                                 Model model) {
         model.addAttribute("cars", carsServices.findCars(brand));
         model.addAttribute("user", userService.findById(id));
+        model.addAttribute("currency", currencyService.findAll());
         return "main_page/main_page";
     }
 }

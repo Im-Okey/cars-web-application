@@ -3,6 +3,7 @@ package com.example.courseworkcarswebapplication.controllers;
 import com.example.courseworkcarswebapplication.models.Cars;
 import com.example.courseworkcarswebapplication.models.User;
 import com.example.courseworkcarswebapplication.services.CarsServices;
+import com.example.courseworkcarswebapplication.services.CurrencyService;
 import com.example.courseworkcarswebapplication.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import java.io.IOException;
 public class CarsController {
     private final CarsServices carsServices;
     private final UserService userService;
+    private final CurrencyService currencyService;
 
     @GetMapping("/showroom/cars/add/{admin_id}")
     public String createCarForm(Model model, @PathVariable Long admin_id) {
@@ -67,6 +69,7 @@ public class CarsController {
         model.addAttribute("car", car);
         model.addAttribute("user", user);
         model.addAttribute("images", car.getImages());
+        model.addAttribute("currency", currencyService.findAll());
         return "cars/car-info";
     }
 }

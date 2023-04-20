@@ -61,4 +61,8 @@ public class UserService {
     public void deleteById(Long userId) {
         userRepository.deleteById(userId);
     }
+
+    public boolean checkUserStatus(User user) {
+        return !user.isIsBlockedStatus();
+    }
 }

@@ -39,7 +39,7 @@
                             <li><a href="user/${user.id}">${user.email}</a></li>
                         </#if>
                         <li><form action="/registration" target="_blank">
-                                <button class="btn btn-outline-danger ms-1">Log out</button>
+                                <button class="btn btn-outline-danger ms-1" style="text-decoration: none">Log out</button>
                             </form></li>
                     </ul>
                 </nav>
@@ -56,11 +56,24 @@
                 </#list>
                 <b>Марка машины: ${car.brand}</b><br>
                 <b>Модель машины: ${car.model}</b><br>
-                <b>Цена: ${car.price}</b><br>
+                <#list currency as curr>
+                    <#assign current_value_check=curr._current_value!"null"/>
+                    <#if  current_value_check == true>
+                        <#assign value=curr.value!"null"/>
+                        <#if  value == "BYN">
+                            <b>Цена: ${car.price * 2.9441} бел.руб</b><br>
+                        </#if>
+                        <#if  value == "RUB">
+                            <b>Цена: ${car.price * 81.5766} ₽</b><br>
+                        </#if>
+                        <#if  value == "USD">
+                            <b>Цена: ${car.price} $</b><br>
+                        </#if>
+                    </#if>
+                </#list>
                 <b>Комплектация: ${car.equipment}</b><br>
                 <b>Краткое описание: ${car.description}</b><br>
                 <b>Год выпуска: ${car.year_of_manufacture}</b><br>
-                нужно разобраться с картинками
 
                 <#if  adminRole == true>
                     <form action="/cars/delete/${car.id}/${user.id}" method="post">

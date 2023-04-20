@@ -136,6 +136,13 @@ img {
     height: 100%;
     z-index: 2;
 }
+
+.flex-curr {
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+}
+
 .header__logo {
     position: relative;
     z-index: 3;

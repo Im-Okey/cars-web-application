@@ -39,7 +39,7 @@
                             <li><a href="user/${admin.id}">${admin.email}</a></li>
                         </#if>
                         <li><form action="/authorisation" target="_blank">
-                                <button class="btn btn-outline-danger ms-1">Log out</button>
+                                <button class="btn btn-outline-danger ms-1" style="text-decoration: none">Log out</button>
                             </form></li>
                     </ul>
                 </nav>

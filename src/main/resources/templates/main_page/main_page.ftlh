@@ -42,7 +42,21 @@
                         <#if  adminRole == true>
                             <li><a href="admin/${user.id}">Админ</a></li>
                         </#if>
-                        <button class="btn btn-outline-danger ms-1"><a href="/authorisation">Log out</a></button>
+                        <form class="flex-curr" action="currency/change_to/${user.id}" method="post" style="color: red">
+                            <select class="form-select" name="to_curr" id="to_curr" style="margin-right: 10px">
+                                <#list currency as cur>
+                                    <#assign selected_val=cur.is_current_value()!"null"/>
+                                    <#if  selected_val == true>
+                                        <option selected = "${cur.value}" value="${cur.value}">${cur.value}</option>
+                                    </#if>
+                                    <#if  selected_val == false>
+                                        <option value="${cur.value}">${cur.value}</option>
+                                    </#if>
+                                </#list>
+                            </select>
+                            <input class="btn btn-primary" type="submit" value="OK">
+                        </form>
+                        <button class="btn btn-outline-danger ms-1"><a href="/authorisation" style="text-decoration: none">Log out</a></button>
                     </ul>
                 </nav>
             </div>
@@ -102,14 +116,28 @@
                         <div class="service__column">
                             <div class="service__item-ser item-ser">
                                 <a href="/cars/info/${car.id}/${user.id}">
-                                    <div class="item-ser__name">${car.brand} ${car.model}</div>
+                                    <div class="item-ser__name" style="color: white">${car.brand} ${car.model}</div>
                                 </a>
                                 <div class="item-ser__img">
                                     <img src="/images/${car.images[0].id}" height="10px"
                                          alt="">
                                 </div>
                                 <div class="item-ser__price">
-                                    ${car.price}$
+                                    <#list currency as curr>
+                                        <#assign current_value_check=curr._current_value!"null"/>
+                                        <#if  current_value_check == true>
+                                            <#assign value=curr.value!"null"/>
+                                            <#if  value == "BYN">
+                                                ${car.price * 2.9441} бел.руб
+                                            </#if>
+                                            <#if  value == "RUB">
+                                                ${car.price * 81.5766} ₽
+                                            </#if>
+                                            <#if  value == "USD">
+                                                ${car.price} $
+                                            </#if>
+                                        </#if>
+                                    </#list>
                                 </div>
                                 <div class="item-ser__list">
                                     <p>2018, Бензин 1,4 л, 53004 км, Автомат, Передний, Седан, Черный...</p>
