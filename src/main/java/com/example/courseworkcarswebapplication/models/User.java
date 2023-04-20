@@ -28,10 +28,10 @@ public class User{
     private String phone;
     @Column(name = "address")
     private String address;
-    @Column(name = "pasport_serial")
-    private String pasport_serial;
-    @Column(name = "pasport_number")
-    private String pasport_number;
+    @Column(name = "passport_serial")
+    private String passport_serial;
+    @Column(name = "passport_number")
+    private String passport_number;
     @Column(name = "email", unique = true)
     private String email;
     @Column(name = "password", length = 1000)

@@ -33,6 +33,7 @@
                     <ul class="header__list">
                         <li><a href="#headerr">Главная</a></li>
                         <li><a href="#services">Услуги</a></li>
+                        <li><a href="news/${user.id}">Новости</a></li>
                         <li><a href="#about">О нас</a></li>
                         <#assign adminRole=user.adminRole!"null"/>
                         <#if  adminRole == false>
@@ -147,7 +148,7 @@
                                     <button class="btn btn-primary">Buy</button>
                                 </#if>
                                 <#if  adminRole == true>
-                                    <button class="btn btn-primary"><a href="/cars/edit/${car.id}/${user.id}">Редактировать</a></button>
+                                    <button class="btn btn-primary"><a href="/cars/edit/${car.id}/${user.id}" style="color: white">Редактировать</a></button>
                                     <form action="/cars/delete/${car.id}/${user.id}" method="post">
                                         <input class="btn btn-primary" type="submit" value="Удалить">
                                     </form>

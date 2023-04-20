@@ -38,6 +38,10 @@
                         <#if  adminRole == false>
                             <li><a href="user/${user.id}">${user.email}</a></li>
                         </#if>
+                        <#assign adminRole=user.adminRole!"null"/>
+                        <#if  adminRole == true>
+                            <li><a href="admin/${user.id}">Админ</a></li>
+                        </#if>
                         <li><form action="/authorisation" target="_blank">
                                 <button class="btn btn-outline-danger ms-1" style="text-decoration: none">Log out</button>
                             </form></li>
@@ -57,8 +61,8 @@
                     Фамилия: <input type="text" value="${user.surname}" name="surname"><br><br>
                     Контактный телефон: <input type="text" placeholder="${user.phone}" name="phone"><br><br>
                     Адрес: <input type="text" value="${user.address}" name="address"><br><br>
-                    Серия паспорта: <input type="text" value="${user.pasport_serial}" name="pasport_serial"><br><br>
-                    Номер паспорта: <input type="text" value="${user.pasport_number}" name="pasport_number"><br><br>
+                    Серия паспорта: <input type="text" value="${user.passport_serial}" name="passport_serial"><br><br>
+                    Номер паспорта: <input type="text" value="${user.passport_number}" name="passport_number"><br><br>
                     <input type="submit" value="Редактировать профиль">
                 </form>
                 Дата последнего редактирования профиля: ${user.dateOfCreated}

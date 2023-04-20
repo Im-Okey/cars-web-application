@@ -31,8 +31,8 @@ public class UserController {
         user.setName("Не указано");
         user.setSurname("Не указано");
         user.setPhone("Не указано");
-        user.setPasport_number("Не указано");
-        user.setPasport_serial("Не указано");
+        user.setPassport_number("Не указано");
+        user.setPassport_serial("Не указано");
         user.setName("Не указано");
         user.setAddress("Не указано");
         userService.save(user);

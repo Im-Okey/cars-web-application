@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
-    <title>Название автосалона</title>
+    <title>Информация</title>
     <meta name="description"
           content="Аренда мини-экскаватора и мини-погрузчика с оператором в Полоцке и Новополоцке. Выполняем широкий спектр земляных работ. Доставку осуществляем своим транспортом" />
     <meta name="keywords"
@@ -31,9 +31,9 @@
                 </div>
                 <nav class="header__menu">
                     <ul class="header__list">
-                        <li><a href="/showroom/${admin.id}">Главная</a></li>
-                        <li><a href="/showroom/${admin.id}#services">Услуги</a></li>
-                        <li><a href="/showroom/${admin.id}#about">О нас</a></li>
+                        <li><a href="/showroom/${user.id}">Главная</a></li>
+                        <li><a href="/showroom/${user.id}#services">Услуги</a></li>
+                        <li><a href="/showroom/${user.id}#about">О нас</a></li>
                         <#assign adminRole=user.adminRole!"null"/>
                         <#if  adminRole == false>
                             <li><a href="user/${user.id}">${user.email}</a></li>
@@ -42,7 +42,7 @@
                         <#if  adminRole == true>
                             <li><a href="admin/${user.id}">Админ</a></li>
                         </#if>
-                        <li><form action="/authorisation" target="_blank">
+                        <li><form action="/registration" target="_blank">
                                 <button class="btn btn-outline-danger ms-1" style="text-decoration: none">Log out</button>
                             </form></li>
                     </ul>
@@ -54,64 +54,11 @@
     <div class="service" id="services">
         <div class="container">
             <div class="service__body" style="margin-top: 100px">
-
-                <form class="form-group" action="/showroom/profile/${admin.id}/edit" method="post" style="font-size: 20px">
-                    <label for="exampleFormControlInput1">Email address</label>
-                    <input readonly type="email" class="form-control" value="${admin.email}" id="exampleFormControlInput1" name="email"><br>
-                    Password <input type="text" class="form-control" value="${admin.password}" name="password"><br>
-                    Name <input type="text" class="form-control" value="${admin.name}" name="name"><br>
-                    Surname <input type="text" class="form-control" value="${admin.surname}" name="surname"><br>
-                    Phone <input type="text" class="form-control" placeholder="${admin.phone}" name="phone"><br>
-                    Address <input type="text" class="form-control" value="${admin.address}" name="address"><br>
-                    Passport series <input type="text" class="form-control" value="${admin.passport_serial}" name="passport_serial"><br>
-                    Passport number: <input type="text" class="form-control" value="${admin.passport_number}" name="passport_number"><br>
-                    <input class="btn btn-primary" type="submit" value="Редактировать профиль">
-                </form>
-                Дата последнего редактирования профиля: ${admin.dateOfCreated}
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio doloremque earum, ipsum possimus quaerat quod voluptatibus. Ab aperiam dolore illum impedit in laborum, numquam, possimus saepe, totam vero voluptatum.
             </div>
         </div>
     </div>
 
-    <div class="about">
-        <div class="about-block__container container">
-            <div class="about__about-block about-block" style="color: white">
-                <div class="about__about-block user-block">
-                    <div class="user-block user-block-row">
-                        <#list users as user>
-                            <div class="user-block user-info" style="font-size: 24px">
-                                <br><br>
-                                ${user.name}  ${user.surname}<br>
-                                ${user.address}<br>
-                                ${user.phone}<br>
-                                ${user.passport_number} ${user.passport_serial}<br><br>
-                                LOGIN: ${user.email}  PASSWORD: ${user.password}<br>
-                                Дата регистрации: ${user.dateOfCreated}<br>
-                                <#assign status=user.isBlockedStatus!"null"/>
-                                <#if  status == false>
-                                    Статус: Профиль активен
-                                </#if>
-                                <#if  status == true>
-                                    Статус: Профиль заблокирован
-                                </#if>
-                                <br><br>
-                            </div>
-                            <div class="user-block buttons">
-                                <div class="user-block delete_btn1" style="padding-right: 20px">
-                                    <form action="/user/delete/${user.id}/${admin.id}" method="post">
-                                        <input class="btn btn-primary" type="submit" value="Удалить">
-                                    </form>
-                                </div>
-                                    <form action="/user/blocked/${user.id}/${admin.id}" method="post">
-                                        <input class="btn btn-primary" type="submit" value="Заблокировать">
-                                    </form>
-                            </div>
-                            <hr>
-                        </#list>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <footer class="footer">
         <div class="footer-block__container container">
@@ -125,9 +72,9 @@
                             <div class="item-foot-left__line"></div>
                             <div class="item-foot-left__list">
                                 <ul>
-                                    <li><a href="/showroom/${admin.id}">Главная</a></li>
-                                    <li><a href="/showroom/${admin.id}#services">Услуги</a></li>
-                                    <li><a href="/showroom/${admin.id}#about">О нас</a></li>
+                                    <li><a href="/showroom/${user.id}">Главная</a></li>
+                                    <li><a href="/showroom/${user.id}#services">Услуги</a></li>
+                                    <li><a href="/showroom/${user.id}#about">О нас</a></li>
                                 </ul>
                             </div>
                         </div>
