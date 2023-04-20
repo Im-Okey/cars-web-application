@@ -23,7 +23,7 @@
                 <div class="header__logo logo">
                     <img class="logo__img" src="img/${"test.png"}" alt="">
                     <div class="logo__a">
-                        <a class="logo__a1" href="">Автосалон</a>
+                        <a class="logo__a1" href="/showroom/${user.id}">Автосалон</a>
                     </div>
                 </div>
                 <div class="header__burger">
@@ -54,7 +54,56 @@
     <div class="service" id="services">
         <div class="container">
             <div class="service__body" style="margin-top: 100px">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio doloremque earum, ipsum possimus quaerat quod voluptatibus. Ab aperiam dolore illum impedit in laborum, numquam, possimus saepe, totam vero voluptatum.
+                <div class="service__news" style="margin-left: 100px">
+                    <#list news as new1>
+                        <div style="margin-bottom: 2px">${new1.title}</div>
+                        <div style="margin-bottom: 10px; font-size: 9px">${new1.publication_date}</div>
+                        <div class="item-ser__img">
+                            <img src="/images/${new1.images[0].id}" height="10px"
+                                 alt="">
+                        </div>
+                        <div style="margin-bottom: 10px; font-size: 11px">Автор: ${new1.author}</div>
+                        <div style="width: 1000px">${new1.description}<br><br><hr> <br><br></div>
+                    </#list>
+                </div>
+                <#assign adminRole=user.adminRole!"null"/>
+                <#if  adminRole == true>
+
+                    <hr>
+                    <br>
+                    <form action="news/add/${user.id}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            Имя автора статьи <input type="text" class="form-control" name="author">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Тематика статьи</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="theme">
+                                <option value="Автоспорт">Автоспорт</option>
+                                <option value="Машины">Машины</option>
+                                <option value="Лайфхаки">Лайфхаки</option>
+                                <option value="Правила дорожного движения">Правила дорожного движения</option>
+                                <option value="Реклама">Реклама</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            Заголовок <input type="text" class="form-control" name="title">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Текст статьи</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            Превое фото: <input type="file" name="file1"><br><br>
+                            Второе фото: <input type="file" name="file2"><br><br>
+                            Третье фото: <input type="file" name="file3"><br><br>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Добавить новость" style="margin-top: 10px">
+                    </form>
+                </#if>
             </div>
         </div>
     </div>

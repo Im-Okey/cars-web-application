@@ -116,43 +116,45 @@
                     <#list cars as car>
                         <div class="service__column">
                             <div class="service__item-ser item-ser">
-                                <a href="/cars/info/${car.id}/${user.id}">
+                                <a href="/cars/info/${car.id}/${user.id}" style="text-decoration: none; color: white">
                                     <div class="item-ser__name" style="color: white">${car.brand} ${car.model}</div>
+                                    <div class="item-ser__img">
+                                        <img src="/images/${car.images[0].id}" height="10px"
+                                             alt="">
+                                    </div>
+                                    <div class="item-ser__price">
+                                        <#list currency as curr>
+                                            <#assign current_value_check=curr._current_value!"null"/>
+                                            <#if  current_value_check == true>
+                                                <#assign value=curr.value!"null"/>
+                                                <#if  value == "BYN">
+                                                    ${car.price * 2.9441} бел.руб
+                                                </#if>
+                                                <#if  value == "RUB">
+                                                    ${car.price * 81.5766} ₽
+                                                </#if>
+                                                <#if  value == "USD">
+                                                    ${car.price} $
+                                                </#if>
+                                            </#if>
+                                        </#list>
+                                    </div>
+                                    <div class="item-ser__list">
+                                        <p>2018, Бензин 1,4 л, 53004 км, Автомат, Передний, Седан, Черный...</p>
+                                    </div>
+                                    <#assign adminRole=user.adminRole!"null"/>
+                                    <#if  adminRole == false>
+                                        <button class="btn btn-primary">Buy</button>
+                                    </#if>
+                                    <#if  adminRole == true>
+                                        <div style="margin-bottom: 5px"><button class="btn btn-primary"><a href="/cars/edit/${car.id}/${user.id}" style="color: white; text-decoration: none;">Редактировать</a></button></div>
+                                        <div>
+                                            <form action="/cars/delete/${car.id}/${user.id}" method="post">
+                                                <input class="btn btn-primary" type="submit" value="Удалить">
+                                            </form>
+                                        </div>
+                                    </#if>
                                 </a>
-                                <div class="item-ser__img">
-                                    <img src="/images/${car.images[0].id}" height="10px"
-                                         alt="">
-                                </div>
-                                <div class="item-ser__price">
-                                    <#list currency as curr>
-                                        <#assign current_value_check=curr._current_value!"null"/>
-                                        <#if  current_value_check == true>
-                                            <#assign value=curr.value!"null"/>
-                                            <#if  value == "BYN">
-                                                ${car.price * 2.9441} бел.руб
-                                            </#if>
-                                            <#if  value == "RUB">
-                                                ${car.price * 81.5766} ₽
-                                            </#if>
-                                            <#if  value == "USD">
-                                                ${car.price} $
-                                            </#if>
-                                        </#if>
-                                    </#list>
-                                </div>
-                                <div class="item-ser__list">
-                                    <p>2018, Бензин 1,4 л, 53004 км, Автомат, Передний, Седан, Черный...</p>
-                                </div>
-                                <#assign adminRole=user.adminRole!"null"/>
-                                <#if  adminRole == false>
-                                    <button class="btn btn-primary">Buy</button>
-                                </#if>
-                                <#if  adminRole == true>
-                                    <button class="btn btn-primary"><a href="/cars/edit/${car.id}/${user.id}" style="color: white">Редактировать</a></button>
-                                    <form action="/cars/delete/${car.id}/${user.id}" method="post">
-                                        <input class="btn btn-primary" type="submit" value="Удалить">
-                                    </form>
-                                </#if>
                             </div>
                         </div>
                     </#list>

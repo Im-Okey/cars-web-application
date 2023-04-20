@@ -33,4 +33,7 @@ public class Image {
     @ManyToOne(fetch = FetchType.EAGER)
     private Cars cars;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private News news;
+
 }

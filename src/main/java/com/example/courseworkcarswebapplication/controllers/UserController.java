@@ -56,6 +56,12 @@ public class UserController {
         model.addAttribute("user", user);
         return "users/user_profile";
     }
+    @GetMapping("/showroom/news/user/{user_id}")
+    public String user_profile_news(@PathVariable Long user_id, Model model) {
+        User user = userService.findById(user_id);
+        model.addAttribute("user", user);
+        return "users/user_profile";
+    }
 
     @PostMapping("/showroom/profile/{user_id}/edit")
     public String edit_user(User user, @PathVariable Long user_id) {
@@ -70,6 +76,13 @@ public class UserController {
 
     @GetMapping("/showroom/admin/{user_id}")
     public String admin_profile(@PathVariable Long user_id, Model model) {
+        User user = userService.findById(user_id);
+        model.addAttribute("admin", user);
+        model.addAttribute("users", userService.findAll());
+        return "users/admin_profile";
+    }
+    @GetMapping("/showroom/news/admin/{user_id}")
+    public String admin_profile_news(@PathVariable Long user_id, Model model) {
         User user = userService.findById(user_id);
         model.addAttribute("admin", user);
         model.addAttribute("users", userService.findAll());

@@ -23,17 +23,27 @@ public class News {
     private Long id;
     @Column(name = "title")
     private String title;
-    @Column(name = "description")
+    @Column(name = "description", length = 7000)
     private String description;
     @Column(name = "publication_date")
     private LocalDateTime publication_date;
     @Column(name = "author")
     private String author;
+    @Column(name = "article_topic")
+    private String article_topic;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "news", orphanRemoval = true)
+    private List<Image> images = new ArrayList<>();
+    private Long previewImageId;
 
     @PrePersist
     private void init() {
         publication_date = LocalDateTime.now();
+    }
+
+    public void addImageToNew(Image image) {
+        image.setNews(this);
+        images.add(image);
     }
 
 }

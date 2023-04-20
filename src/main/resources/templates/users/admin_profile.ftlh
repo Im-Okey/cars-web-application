@@ -23,7 +23,7 @@
                 <div class="header__logo logo">
                     <img class="logo__img" src="img/${"test.png"}" alt="">
                     <div class="logo__a">
-                        <a class="logo__a1" href="">Автосалон</a>
+                        <a class="logo__a1" href="/showroom/${admin.id}">Автосалон</a>
                     </div>
                 </div>
                 <div class="header__burger">
@@ -34,13 +34,13 @@
                         <li><a href="/showroom/${admin.id}">Главная</a></li>
                         <li><a href="/showroom/${admin.id}#services">Услуги</a></li>
                         <li><a href="/showroom/${admin.id}#about">О нас</a></li>
-                        <#assign adminRole=user.adminRole!"null"/>
+                        <#assign adminRole=admin.adminRole!"null"/>
                         <#if  adminRole == false>
-                            <li><a href="user/${user.id}">${user.email}</a></li>
+                            <li><a href="user/${admin.id}">${admin.email}</a></li>
                         </#if>
-                        <#assign adminRole=user.adminRole!"null"/>
+                        <#assign adminRole=admin.adminRole!"null"/>
                         <#if  adminRole == true>
-                            <li><a href="admin/${user.id}">Админ</a></li>
+                            <li><a href="admin/${admin.id}">Админ</a></li>
                         </#if>
                         <li><form action="/authorisation" target="_blank">
                                 <button class="btn btn-outline-danger ms-1" style="text-decoration: none">Log out</button>
