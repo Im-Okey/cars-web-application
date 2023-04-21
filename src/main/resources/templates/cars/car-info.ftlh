@@ -84,9 +84,27 @@
         <div class="container">
             <div class="service__body">
                 <h4>Подробная информация о ${car.brand} ${car.model}</h4>
-                <#list images as img>
-                    <img src="/images/${img.id}" height="70px" alt=""><br><br>
-                </#list>
+<#--                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">-->
+<#--                    <div class="carousel-inner">-->
+<#--                        <div class="carousel-item active">-->
+<#--                            <img class="d-block w-100" src="/images/${images[0].id}" alt="Первый слайд">-->
+<#--                        </div>-->
+<#--                        <div class="carousel-item">-->
+<#--                            <img class="d-block w-100" src="/images/${images[1].id}" alt="Второй слайд">-->
+<#--                        </div>-->
+<#--                        <div class="carousel-item">-->
+<#--                            <img class="d-block w-100" src="/images/${images[2].id}" alt="Третий слайд">-->
+<#--                        </div>-->
+<#--                    </div>-->
+<#--                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
+<#--                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<#--                        <span class="sr-only">Previous</span>-->
+<#--                    </a>-->
+<#--                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
+<#--                        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<#--                        <span class="sr-only">Next</span>-->
+<#--                    </a>-->
+<#--                </div>-->
                 <b>Марка машины: ${car.brand}</b><br>
                 <b>Модель машины: ${car.model}</b><br>
                 <#list currency as curr>
@@ -168,14 +186,14 @@
                             </div>
                             <div class="item-foot-soc__line"></div>
                             <div class="item-foot-soc__row">
-                                <a href="https://vk.com/id163496274" target="blank">
-                                    <img src="/img/${"test.png"}" alt="">
+                                <a href="https://www.instagram.com/butko_pashka/" target="blank" style="text-decoration: none">
+                                    <img src="/img/Social/${"instagram.png"}" alt="" style="width: 30px; margin-left: 17px;">
                                 </a>
-                                <a href="https://www.instagram.com/butko_pashka/" target="blank">
-                                    <img src="/img/${"test.png"}" alt="">
+                                <a href="https://vk.com/id163496274" target="blank" style="text-decoration: none">
+                                    <img src="/img/Social/${"vk.png"}" alt="" style="width: 30px; margin-left: 17px;">
                                 </a>
-                                <a href="https://www.facebook.com/profile.php?id=100032223661821" target="blank">
-                                    <img class="facebook" src="/img/${"test.png"}" alt="">
+                                <a href="https://www.facebook.com/profile.php?id=100032223661821" target="blank" style="text-decoration: none">
+                                    <img class="facebook" src="/img/Social/${"facebook.png"}" alt="" style="width: 30px; margin-top: 2px; margin-left: 17px;">
                                 </a>
                             </div>
                         </div>
@@ -189,6 +207,9 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" defer></script>
 <script src="js/script.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

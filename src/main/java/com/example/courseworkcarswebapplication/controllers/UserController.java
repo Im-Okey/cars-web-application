@@ -5,6 +5,7 @@ import com.example.courseworkcarswebapplication.models.History;
 import com.example.courseworkcarswebapplication.models.User;
 import com.example.courseworkcarswebapplication.services.CurrencyService;
 import com.example.courseworkcarswebapplication.services.HistoryService;
+import com.example.courseworkcarswebapplication.services.TransactionsService;
 import com.example.courseworkcarswebapplication.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ public class UserController {
     private final UserService userService;
     private final HistoryService historyService;
     private final CurrencyService currencyService;
+    private final TransactionsService transactionsService;
 
     @GetMapping("/registration")
     public String registration_form() {
@@ -71,10 +73,13 @@ public class UserController {
 
     @PostMapping("/showroom/profile/{user_id}/edit")
     public String edit_user(User user, @PathVariable Long user_id) {
+        User user_check = userService.findById(user_id);
         LocalDateTime dateOfCreated;
         dateOfCreated = LocalDateTime.now();
         user.setId(user_id);
         user.setDateOfCreated(dateOfCreated);
+        user.setHistoryList(user_check.getHistoryList());
+        user.setTransactionsList(user_check.getTransactionsList());
         userService.save(user);
         return "redirect:/showroom/" + user_id;
     }
@@ -119,5 +124,13 @@ public class UserController {
         model.addAttribute("admin", admin);
         model.addAttribute("currency", currencyService.findAll());
         return "users/history_of_purchase";
+    }
+
+    @GetMapping("/transactions/{admin_id}")
+    public String historyByUser(@PathVariable Long admin_id, Model model) {
+        User admin = userService.findById(admin_id);
+        model.addAttribute("admin", admin);
+        model.addAttribute("transactions", transactionsService.findAll());
+        return "users/transactions";
     }
 }

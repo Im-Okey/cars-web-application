@@ -188,20 +188,42 @@
                 <div class="about-block__benefits benefits">
                     <div class="benefits__row">
                         <div class="benefits__column">
-                            <#list [1, 2, 3, 4] as item>
-                                <div class="benefits__item item">
-                                    <div class="item__row">
-                                        <div class="item__image">
-                                            <img src="../img/Cars/${"DSC00712.jpg"}" width="80" height="100" alt="">
-                                        </div>
-                                        <div class="item__text">
-                                            <div class="item__title">Гарантия качества</div>
-                                            <div class="item__line"></div>
-                                            <div class="item__subtitle"></div>
-                                        </div>
+                            <div class="benefits__item item">
+                                <div class="item__row">
+                                    <div class="item__image">
+                                        <img src="../img/about/${"garantiya.webp"}" width="80" height="100" alt="">
+                                    </div>
+                                    <div class="item__text">
+                                        <div class="item__title">Гарантия качества</div>
+                                        <div class="item__line"></div>
+                                        <div class="item__subtitle"></div>
                                     </div>
                                 </div>
-                            </#list>
+                            </div>
+                            <div class="benefits__item item">
+                                <div class="item__row">
+                                    <div class="item__image">
+                                        <img src="../img/about/${"aproach.png"}" width="80" height="100" alt="">
+                                    </div>
+                                    <div class="item__text">
+                                        <div class="item__title">Гарантия качества</div>
+                                        <div class="item__line"></div>
+                                        <div class="item__subtitle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="benefits__item item">
+                                <div class="item__row">
+                                    <div class="item__image">
+                                        <img src="../img/about/${"time.webp"}" width="80" height="100" alt="">
+                                    </div>
+                                    <div class="item__text">
+                                        <div class="item__title">Гарантия качества</div>
+                                        <div class="item__line"></div>
+                                        <div class="item__subtitle"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -254,14 +276,14 @@
                             </div>
                             <div class="item-foot-soc__line"></div>
                             <div class="item-foot-soc__row">
-                                <a href="https://vk.com/id163496274" target="blank">
-                                    <img src="/img/${"test.png"}" alt="">
+                                <a href="https://www.instagram.com/butko_pashka/" target="blank" style="text-decoration: none">
+                                    <img src="/img/Social/${"instagram.png"}" alt="" style="width: 30px; margin-left: 17px;">
                                 </a>
-                                <a href="https://www.instagram.com/butko_pashka/" target="blank">
-                                    <img src="/img/${"test.png"}" alt="">
+                                <a href="https://vk.com/id163496274" target="blank" style="text-decoration: none">
+                                    <img src="/img/Social/${"vk.png"}" alt="" style="width: 30px; margin-left: 17px;">
                                 </a>
-                                <a href="https://www.facebook.com/profile.php?id=100032223661821" target="blank">
-                                    <img class="facebook" src="/img/${"test.png"}" alt="">
+                                <a href="https://www.facebook.com/profile.php?id=100032223661821" target="blank" style="text-decoration: none">
+                                    <img class="facebook" src="/img/Social/${"facebook.png"}" alt="" style="width: 30px; margin-top: 2px; margin-left: 17px;">
                                 </a>
                             </div>
                         </div>

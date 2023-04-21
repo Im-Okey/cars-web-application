@@ -36,11 +36,11 @@
                         <li><a href="/showroom/${admin.id}#about">О нас</a></li>
                         <#assign adminRole=admin.adminRole!"null"/>
                         <#if  adminRole == false>
-                            <li><a href="user/${admin.id}">${admin.email}</a></li>
+                            <li><a href="/showroom/user/${admin.id}">${admin.email}</a></li>
                         </#if>
                         <#assign adminRole=admin.adminRole!"null"/>
                         <#if  adminRole == true>
-                            <li><a href="admin/${admin.id}">Админ</a></li>
+                            <li><a href="/showroom/admin/${admin.id}">Админ</a></li>
                         </#if>
                         <li><form action="/authorisation" target="_blank">
                                 <button class="btn btn-outline-danger ms-1" style="text-decoration: none">Log out</button>
@@ -52,76 +52,39 @@
     </header>
 
     <div class="service" id="services">
-        <div class="container">
-            <div class="service__body" style="margin-top: 100px">
-
-                <form class="form-group" action="/showroom/profile/${admin.id}/edit" method="post" style="font-size: 20px">
-                    <label for="exampleFormControlInput1">Email address</label>
-                    <input readonly type="email" class="form-control" value="${admin.email}" id="exampleFormControlInput1" name="email"><br>
-                    Password <input type="text" class="form-control" value="${admin.password}" name="password"><br>
-                    Name <input type="text" class="form-control" value="${admin.name}" name="name"><br>
-                    Surname <input type="text" class="form-control" value="${admin.surname}" name="surname"><br>
-                    Phone <input type="text" class="form-control" placeholder="${admin.phone}" name="phone"><br>
-                    Address <input type="text" class="form-control" value="${admin.address}" name="address"><br>
-                    Passport series <input type="text" class="form-control" value="${admin.passport_serial}" name="passport_serial"><br>
-                    Passport number: <input type="text" class="form-control" value="${admin.passport_number}" name="passport_number"><br>
-                    <input class="btn btn-primary" type="submit" value="Редактировать профиль">
-                </form>
-                <p style="margin-bottom: 20px;">Дата последнего редактирования профиля: ${admin.dateOfCreated}</p>
-                <hr>
-                <div class="user-block delete_btn1" style="margin-bottom: 20px; margin-top: 20px;">
-                    <form action="/transactions/${admin.id}" method="get">
-                        <input class="btn btn-primary" type="submit" value="Все транзакции">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="about">
-        <div class="about-block__container container">
-            <div class="about__about-block about-block" style="color: white">
-                <div class="about__about-block user-block">
-                    <div class="user-block user-block-row">
-                        <#list users as user>
-                            <div class="user-block user-info" style="font-size: 24px">
-                                <br><br>
-                                ${user.name}  ${user.surname}<br>
-                                ${user.address}<br>
-                                ${user.phone}<br>
-                                ${user.passport_number} ${user.passport_serial}<br><br>
-                                LOGIN: ${user.email}  PASSWORD: ${user.password}<br>
-                                Дата регистрации: ${user.dateOfCreated}<br>
-                                <#assign status=user.isBlockedStatus!"null"/>
-                                <#if  status == false>
-                                    Статус: Профиль активен
-                                </#if>
-                                <#if  status == true>
-                                    Статус: Профиль заблокирован
-                                </#if>
-                                <br><br>
-                            </div>
-                            <div class="user-block buttons">
-                                <div class="user-block delete_btn1" style="padding-right: 20px">
-                                    <form action="/history/${user.id}/${admin.id}" method="get">
-                                        <input class="btn btn-primary" type="submit" value="История покупок">
-                                    </form>
-                                </div>
-                                <div class="user-block delete_btn1" style="padding-right: 20px">
-                                    <form action="/user/blocked/${user.id}/${admin.id}" method="post">
-                                        <input class="btn btn-primary" type="submit" value="Заблокировать">
-                                    </form>
-                                </div>
-                                <div class="user-block delete_btn1" style="padding-right: 20px">
-                                    <form action="/user/delete/${user.id}/${admin.id}" method="post">
-                                        <input class="btn btn-primary" type="submit" value="Удалить">
-                                    </form>
-                                </div>
-                            </div>
-                            <hr>
-                        </#list>
-                    </div>
-                </div>
+        <div class="container" style="margin-top: 100px">
+            <div style="text-align: center; font-size: 30px; margin-bottom: 40px">Все транзакции</div>
+            <div class="service__row">
+                <table class="table" style="color: white">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Марка</th>
+                        <th scope="col">Модель</th>
+                        <th scope="col">Количество</th>
+                        <th scope="col">Статус покупки</th>
+                        <th scope="col">Сумма</th>
+                        <th scope="col">Дата покупки</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <#list transactions as transaction>
+                        <tr>
+                            <th scope="row">${transaction.id}</th>
+                            <td>${transaction.user.name}</td>
+                            <td>${transaction.user.surname}</td>
+                            <td>${transaction.car.brand}</td>
+                            <td>${transaction.car.model}</td>
+                            <td>${transaction.amount}</td>
+                            <td>${transaction.status}</td>
+                            <td>${transaction.car.price}</td>
+                            <td>${transaction.dateOfCreated}</td>
+                        </tr>
+                    </#list>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -189,7 +152,7 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" defer></script>
-<script src="js/script.js" defer></script>
+<script src="js/${"script.js"}" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 

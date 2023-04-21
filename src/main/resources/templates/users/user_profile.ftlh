@@ -67,7 +67,7 @@
                 </form>
                 Дата последнего редактирования профиля: ${user.dateOfCreated}
             </div>
-            <form action="/history/${user.id}/${user.id}" target="_blank">
+            <form action="/history/${user.id}/${user.id}">
                 <button class="btn btn-outline-danger ms-1" style="text-decoration: none">История покупок</button>
             </form>
         </div>
@@ -117,14 +117,14 @@
                             </div>
                             <div class="item-foot-soc__line"></div>
                             <div class="item-foot-soc__row">
-                                <a href="https://vk.com/id163496274" target="blank">
-                                    <img src="/img/${"test.png"}" alt="">
+                                <a href="https://www.instagram.com/butko_pashka/" target="blank" style="text-decoration: none">
+                                    <img src="/img/Social/${"instagram.png"}" alt="" style="width: 30px; margin-left: 17px;">
                                 </a>
-                                <a href="https://www.instagram.com/butko_pashka/" target="blank">
-                                    <img src="/img/${"test.png"}" alt="">
+                                <a href="https://vk.com/id163496274" target="blank" style="text-decoration: none">
+                                    <img src="/img/Social/${"vk.png"}" alt="" style="width: 30px; margin-left: 17px;">
                                 </a>
-                                <a href="https://www.facebook.com/profile.php?id=100032223661821" target="blank">
-                                    <img class="facebook" src="/img/${"test.png"}" alt="">
+                                <a href="https://www.facebook.com/profile.php?id=100032223661821" target="blank" style="text-decoration: none">
+                                    <img class="facebook" src="/img/Social/${"facebook.png"}" alt="" style="width: 30px; margin-top: 2px; margin-left: 17px;">
                                 </a>
                             </div>
                         </div>

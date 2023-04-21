@@ -3,10 +3,7 @@ package com.example.courseworkcarswebapplication.controllers;
 import com.example.courseworkcarswebapplication.models.Cars;
 import com.example.courseworkcarswebapplication.models.History;
 import com.example.courseworkcarswebapplication.models.User;
-import com.example.courseworkcarswebapplication.services.CarsServices;
-import com.example.courseworkcarswebapplication.services.CurrencyService;
-import com.example.courseworkcarswebapplication.services.HistoryService;
-import com.example.courseworkcarswebapplication.services.UserService;
+import com.example.courseworkcarswebapplication.services.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +22,7 @@ public class CarsController {
     private final UserService userService;
     private final CurrencyService currencyService;
     private final HistoryService historyService;
+    private final TransactionsService transactionsService;
 
     @GetMapping("/showroom/cars/add/{admin_id}")
     public String createCarForm(Model model, @PathVariable Long admin_id) {
@@ -81,6 +79,7 @@ public class CarsController {
         Cars car = carsServices.findById(car_id);
         User user = userService.findById(user_id);
         historyService.saveHistory(car, user);
+        transactionsService.saveTransaction(car, user);
         return "redirect:/showroom/" + user_id;
     }
 }
