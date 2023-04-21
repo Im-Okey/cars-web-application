@@ -97,13 +97,20 @@
                             </div>
                             <div class="user-block buttons">
                                 <div class="user-block delete_btn1" style="padding-right: 20px">
+                                    <form action="/history/${user.id}/${admin.id}" method="get">
+                                        <input class="btn btn-primary" type="submit" value="История покупок">
+                                    </form>
+                                </div>
+                                <div class="user-block delete_btn1" style="padding-right: 20px">
+                                    <form action="/user/blocked/${user.id}/${admin.id}" method="post">
+                                        <input class="btn btn-primary" type="submit" value="Заблокировать">
+                                    </form>
+                                </div>
+                                <div class="user-block delete_btn1" style="padding-right: 20px">
                                     <form action="/user/delete/${user.id}/${admin.id}" method="post">
                                         <input class="btn btn-primary" type="submit" value="Удалить">
                                     </form>
                                 </div>
-                                    <form action="/user/blocked/${user.id}/${admin.id}" method="post">
-                                        <input class="btn btn-primary" type="submit" value="Заблокировать">
-                                    </form>
                             </div>
                             <hr>
                         </#list>

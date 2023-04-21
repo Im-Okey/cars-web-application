@@ -67,6 +67,9 @@
                 </form>
                 Дата последнего редактирования профиля: ${user.dateOfCreated}
             </div>
+            <form action="/history/${user.id}/${user.id}" target="_blank">
+                <button class="btn btn-outline-danger ms-1" style="text-decoration: none">История покупок</button>
+            </form>
         </div>
     </div>
 

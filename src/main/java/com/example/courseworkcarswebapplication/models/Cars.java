@@ -39,6 +39,7 @@ public class Cars {
     private List<Image> images = new ArrayList<>();
     private Long previewImageId;
     private LocalDateTime dateOfCreated;
+    private boolean isSold;
 
     @PrePersist
     private void init() {

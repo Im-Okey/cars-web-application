@@ -1,7 +1,10 @@
 package com.example.courseworkcarswebapplication.controllers;
 
 import com.example.courseworkcarswebapplication.models.Cars;
+import com.example.courseworkcarswebapplication.models.History;
 import com.example.courseworkcarswebapplication.models.User;
+import com.example.courseworkcarswebapplication.services.CurrencyService;
+import com.example.courseworkcarswebapplication.services.HistoryService;
 import com.example.courseworkcarswebapplication.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -14,12 +17,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
+    private final HistoryService historyService;
+    private final CurrencyService currencyService;
 
     @GetMapping("/registration")
     public String registration_form() {
@@ -102,5 +108,16 @@ public class UserController {
         user.setId(user_id);
         userService.save_user(user);
         return "redirect:/showroom/admin/" + admin_id;
+    }
+
+    @GetMapping("/history/{user_id}/{admin_id}")
+    public String historyByUser(@PathVariable Long user_id, @PathVariable Long admin_id, Model model) {
+        User user = userService.findById(user_id);
+        User admin = userService.findById(admin_id);
+        model.addAttribute("history", historyService.findHistoryByUser(user));
+        model.addAttribute("user", user);
+        model.addAttribute("admin", admin);
+        model.addAttribute("currency", currencyService.findAll());
+        return "users/history_of_purchase";
     }
 }

@@ -21,9 +21,9 @@
         <div class="container">
             <div class="header__body">
                 <div class="header__logo logo">
-                    <img class="logo__img" src="img/${"test.png"}" alt="">
+                    <img class="logo__img" src="https://static.tildacdn.com/tild3265-6661-4436-a137-303635326366/logo_white_size-01.png" alt="">
                     <div class="logo__a">
-                        <a class="logo__a1" href="">Автосалон</a>
+                        <a class="logo__a1" href="" style="text-decoration: none">Select Auto</a>
                     </div>
                 </div>
                 <div class="header__burger">
@@ -89,11 +89,11 @@
             <div class="main-block__container container">
                 <div class="main-block__body">
                     <div class="main-block__title" id="headerr">
-                        <h1>Lorem ipsum dolor.</h1>
+                        <h1 style="font-size: 50px; font-weight: bold">ШОУ-РУМ Select Auto</h1>
                     </div>
                     <div class="main-block__subtitle">
-                        <p>Lorem ipsum.</p>
-                        <p>Lorem ipsum.</p>
+                        <p style="font-size: 50px;">Минск, пр-т независимости, 169</p>
+                        <p style="font-size: 20px;">Команда Select Auto продолжает делать все, чтобы Ваш опыт работы с нами стал еще более приятным. Ждем Вас в нашем новом просторном доме. 🤍</p>
                     </div>
                     <div class="main-block__subtitle-tel">
                         <a href="tel:+375298080706" class="nomer">+375(29)808-07-06</a>
@@ -114,38 +114,38 @@
                 </form>
                 <div class="service__row">
                     <#list cars as car>
-                        <div class="service__column">
-                            <div class="service__item-ser item-ser">
-                                <a href="/cars/info/${car.id}/${user.id}" style="text-decoration: none; color: white">
-                                    <div class="item-ser__name" style="color: white">${car.brand} ${car.model}</div>
-                                    <div class="item-ser__img">
-                                        <img src="/images/${car.images[0].id}" height="10px"
-                                             alt="">
-                                    </div>
-                                    <div class="item-ser__price">
-                                        <#list currency as curr>
-                                            <#assign current_value_check=curr._current_value!"null"/>
-                                            <#if  current_value_check == true>
-                                                <#assign value=curr.value!"null"/>
-                                                <#if  value == "BYN">
-                                                    ${car.price * 2.9441} бел.руб
+                        <#assign solded=car.isSold()!"null"/>
+                        <#if  solded == false>
+                            <div class="service__column">
+                                <div class="service__item-ser item-ser">
+                                    <a href="/cars/info/${car.id}/${user.id}" style="text-decoration: none; color: white">
+                                        <div class="item-ser__name" style="color: white">${car.brand} ${car.model}</div>
+                                        <div class="item-ser__img">
+                                            <img src="/images/${car.images[0].id}" height="10px"
+                                                 alt="">
+                                        </div>
+                                        <div class="item-ser__price">
+                                            <#list currency as curr>
+                                                <#assign current_value_check=curr._current_value!"null"/>
+                                                <#if  current_value_check == true>
+                                                    <#assign value=curr.value!"null"/>
+                                                    <#if  value == "BYN">
+                                                        ${car.price * 2.9441} бел.руб
+                                                    </#if>
+                                                    <#if  value == "RUB">
+                                                        ${car.price * 81.5766} ₽
+                                                    </#if>
+                                                    <#if  value == "USD">
+                                                        ${car.price} $
+                                                    </#if>
                                                 </#if>
-                                                <#if  value == "RUB">
-                                                    ${car.price * 81.5766} ₽
-                                                </#if>
-                                                <#if  value == "USD">
-                                                    ${car.price} $
-                                                </#if>
-                                            </#if>
-                                        </#list>
-                                    </div>
-                                    <div class="item-ser__list">
-                                        <p>2018, Бензин 1,4 л, 53004 км, Автомат, Передний, Седан, Черный...</p>
-                                    </div>
+                                            </#list>
+                                        </div>
+                                        <div class="item-ser__list">
+                                            <p>2018, Бензин 1,4 л, 53004 км, Автомат, Передний, Седан, Черный...</p>
+                                        </div>
+                                    </a>
                                     <#assign adminRole=user.adminRole!"null"/>
-                                    <#if  adminRole == false>
-                                        <button class="btn btn-primary">Buy</button>
-                                    </#if>
                                     <#if  adminRole == true>
                                         <div style="margin-bottom: 5px"><button class="btn btn-primary"><a href="/cars/edit/${car.id}/${user.id}" style="color: white; text-decoration: none;">Редактировать</a></button></div>
                                         <div>
@@ -154,9 +154,9 @@
                                             </form>
                                         </div>
                                     </#if>
-                                </a>
+                                </div>
                             </div>
-                        </div>
+                        </#if>
                     </#list>
                 </div>
                 <#assign adminRole=user.adminRole!"null"/>
@@ -192,7 +192,7 @@
                                 <div class="benefits__item item">
                                     <div class="item__row">
                                         <div class="item__image">
-                                            <img src="/img/${"test.png"}" width="80" height="100" alt="">
+                                            <img src="../img/Cars/${"DSC00712.jpg"}" width="80" height="100" alt="">
                                         </div>
                                         <div class="item__text">
                                             <div class="item__title">Гарантия качества</div>

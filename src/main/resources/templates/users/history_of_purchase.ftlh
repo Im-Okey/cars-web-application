@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
-    <title>Информация</title>
+    <title>Название автосалона</title>
     <meta name="description"
           content="Аренда мини-экскаватора и мини-погрузчика с оператором в Полоцке и Новополоцке. Выполняем широкий спектр земляных работ. Доставку осуществляем своим транспортом" />
     <meta name="keywords"
@@ -31,14 +31,18 @@
                 </div>
                 <nav class="header__menu">
                     <ul class="header__list">
-                        <li><a href="/showroom/${user.id}">Главная</a></li>
-                        <li><a href="/showroom/${user.id}#services">Услуги</a></li>
-                        <li><a href="/showroom/${user.id}#about">О нас</a></li>
-                        <#assign adminRole=user.adminRole!"null"/>
+                        <li><a href="/showroom/${admin.id}">Главная</a></li>
+                        <li><a href="/showroom/${admin.id}#services">Услуги</a></li>
+                        <li><a href="/showroom/${admin.id}#about">О нас</a></li>
+                        <#assign adminRole=admin.adminRole!"null"/>
                         <#if  adminRole == false>
-                            <li><a href="user/${user.id}">${user.email}</a></li>
+                            <li><a href="/showroom/user/${admin.id}">${admin.email}</a></li>
                         </#if>
-                        <li><form action="/registration" target="_blank">
+                        <#assign adminRole=admin.adminRole!"null"/>
+                        <#if  adminRole == true>
+                            <li><a href="/showroom/admin/${admin.id}">Админ</a></li>
+                        </#if>
+                        <li><form action="/authorisation" target="_blank">
                                 <button class="btn btn-outline-danger ms-1" style="text-decoration: none">Log out</button>
                             </form></li>
                     </ul>
@@ -47,82 +51,46 @@
         </div>
     </header>
 
-    <!-- Модальное окно для покупки авто -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Подтверждение покупки</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="/purchase/${user.id}/${car.id}" method="post" enctype="multipart/form-data">
-                        Для подтверждения покупки внесите необходимые данные в форму ниже
-                        <div class="form-group">
-                            Пароль <input type="text" class="form-control">
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            Серия паспорта <input type="text" class="form-control">
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            Номер паспорта <input type="text" class="form-control">
-                        </div>
-                        <br>
-                        <input class="btn btn-primary" type="submit" value="Совершить покупку" style="margin-top: 10px">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="service" id="services">
-        <div class="container">
-            <div class="service__body">
-                <h4>Подробная информация о ${car.brand} ${car.model}</h4>
-                <#list images as img>
-                    <img src="/images/${img.id}" height="70px" alt=""><br><br>
-                </#list>
-                <b>Марка машины: ${car.brand}</b><br>
-                <b>Модель машины: ${car.model}</b><br>
-                <#list currency as curr>
-                    <#assign current_value_check=curr._current_value!"null"/>
-                    <#if  current_value_check == true>
-                        <#assign value=curr.value!"null"/>
-                        <#if  value == "BYN">
-                            <b>Цена: ${car.price * 2.9441} бел.руб</b><br>
-                        </#if>
-                        <#if  value == "RUB">
-                            <b>Цена: ${car.price * 81.5766} ₽</b><br>
-                        </#if>
-                        <#if  value == "USD">
-                            <b>Цена: ${car.price} $</b><br>
-                        </#if>
-                    </#if>
-                </#list>
-                <b>Комплектация: ${car.equipment}</b><br>
-                <b>Краткое описание: ${car.description}</b><br>
-                <b>Год выпуска: ${car.year_of_manufacture}</b><br>
+        <div class="container" style="margin-top: 100px">
+            <div style="text-align: center; font-size: 30px; margin-bottom: 40px">История покупок пользователя ${user.email}</div>
+            <div class="service__row">
+                <#list history as his>
+                    <div class="service__column">
+                        <div class="service__item-ser item-ser">
+                            <div class="item-ser__name" style="color: white">${his.car.brand} ${his.car.model}</div>
+                            <div class="item-ser__img">
+                                <img src="/images/${his.car.images[0].id}" height="10px"
+                                     alt="">
+                            </div>
+                            <div class="item-ser__price">
+                                <#list currency as curr>
+                                    <#assign current_value_check=curr._current_value!"null"/>
+                                    <#if  current_value_check == true>
+                                        <#assign value=curr.value!"null"/>
+                                        <#if  value == "BYN">
+                                            ${his.car.price * 2.9441} бел.руб
+                                        </#if>
+                                        <#if  value == "RUB">
+                                            ${his.car.price * 81.5766} ₽
+                                        </#if>
+                                        <#if  value == "USD">
+                                            ${his.car.price} $
+                                        </#if>
+                                    </#if>
+                                </#list>
+                            </div>
+                            <div class="item-ser__list">
+                                <p>2018, Бензин 1,4 л, 53004 км, Автомат, Передний, Седан, Черный...</p>
+                                <p>Дата покупки ${his.dateOfCreated}</p>
+                            </div>
 
-                <#if  adminRole == false>
-                    <!-- Кнопка-триггер модального окна -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        Купить
-                    </button>
-                </#if>
-                <#if  adminRole == true>
-                    <form action="/cars/delete/${car.id}/${user.id}" method="post">
-                        <input type="submit" value="Удалить машину">
-                    </form>
-                </#if>
+                        </div>
+                    </div>
+                </#list>
             </div>
         </div>
     </div>
-
 
     <footer class="footer">
         <div class="footer-block__container container">
@@ -136,9 +104,9 @@
                             <div class="item-foot-left__line"></div>
                             <div class="item-foot-left__list">
                                 <ul>
-                                    <li><a href="/showroom/${user.id}">Главная</a></li>
-                                    <li><a href="/showroom/${user.id}#services">Услуги</a></li>
-                                    <li><a href="/showroom/${user.id}#about">О нас</a></li>
+                                    <li><a href="/showroom/${admin.id}">Главная</a></li>
+                                    <li><a href="/showroom/${admin.id}#services">Услуги</a></li>
+                                    <li><a href="/showroom/${admin.id}#about">О нас</a></li>
                                 </ul>
                             </div>
                         </div>

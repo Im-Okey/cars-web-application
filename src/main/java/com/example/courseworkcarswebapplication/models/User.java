@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Data
@@ -42,13 +44,16 @@ public class User{
     private boolean isAdminRole = false;
     private boolean IsBlockedStatus = false;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
+    private List<History> historyList = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
+    private List<Transactions> transactionsList = new ArrayList<>();
+
     @PrePersist
     private void init() {
         dateOfCreated = LocalDateTime.now();
     }
-//    @Enumerated(EnumType.STRING)
-//    private Roles role;
-//    @Enumerated(EnumType.STRING)
-//    private UserStatus status;
+
 
 }
