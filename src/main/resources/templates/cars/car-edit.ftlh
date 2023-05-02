@@ -54,14 +54,14 @@
     <div class="service" id="services">
         <div class="container">
             <div class="service__body" style="margin-top: 100px">
-                <form action="/showroom/cars/${user.id}/${car.id}/edit" method="post" enctype="multipart/form-data">
-                    Идитентификатор: <input readonly type="text" value="${car.id}" name="id"><br><br>
-                    Марка машины: <input type="text" value="${car.brand}" name="brand"><br><br>
-                    Модель машины: <input type="text" value="${car.model}" name="model"><br><br>
-                    Цена: <input type="number" placeholder="${car.price}" name="price"><br><br>
-                    Комплектация: <input type="text" value="${car.equipment}" name="equipment"><br><br>
-                    Краткое описание: <input type="text" value="${car.description}" name="description"><br><br>
-                    Год выпуска: <input type="number" placeholder="${car.year_of_manufacture}" name="year_of_manufacture"><br><br>
+                <form class="form-group" action="/showroom/cars/${user.id}/${car.id}/edit" method="post" enctype="multipart/form-data">
+                    Идитентификатор: <input readonly type="text" class="form-control" value="${car.id}" name="id"><br><br>
+                    Марка машины: <input type="text"class="form-control" value="${car.brand}" name="brand"><br><br>
+                    Модель машины: <input type="text" class="form-control" value="${car.model}" name="model"><br><br>
+                    Цена: <input type="number" class="form-control" placeholder="${car.price}" name="price"><br><br>
+                    Комплектация: <input type="text" class="form-control" value="${car.equipment}" name="equipment"><br><br>
+                    Краткое описание: <input type="text" class="form-control" value="${car.description}" name="description"><br><br>
+                    Год выпуска: <input type="number" class="form-control" placeholder="${car.year_of_manufacture}" name="year_of_manufacture"><br><br>
                     Превое фото: <input type="file" name="file1"><br><br>
                     Второе фото: <input type="file" name="file2"><br><br>
                     Третье фото: <input type="file" name="file3"><br><br>

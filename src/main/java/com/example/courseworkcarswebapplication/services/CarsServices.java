@@ -23,6 +23,13 @@ public class CarsServices {
         if (brand.length() >= 1) return carsRepository.findCarsByBrand(brand);
         return  carsRepository.findAll();
     }
+
+    public List<Cars> filterCars(String brand_car, String model_car, String price_from, String price_to) {
+
+        return carsRepository.findByBrandAndModelAndPriceBetween(brand_car, model_car,
+                Integer.parseInt(price_from), Integer.parseInt(price_to));
+    }
+
     public Cars saveCar(Cars car, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
         Image image1;
         Image image2;

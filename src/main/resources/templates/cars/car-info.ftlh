@@ -81,32 +81,33 @@
     </div>
 
     <div class="service" id="services">
-        <div class="container">
+        <div class="container" style="font-size: 24px;">
             <div class="service__body">
                 <h4>Подробная информация о ${car.brand} ${car.model}</h4>
-<#--                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">-->
-<#--                    <div class="carousel-inner">-->
-<#--                        <div class="carousel-item active">-->
-<#--                            <img class="d-block w-100" src="/images/${images[0].id}" alt="Первый слайд">-->
-<#--                        </div>-->
-<#--                        <div class="carousel-item">-->
-<#--                            <img class="d-block w-100" src="/images/${images[1].id}" alt="Второй слайд">-->
-<#--                        </div>-->
-<#--                        <div class="carousel-item">-->
-<#--                            <img class="d-block w-100" src="/images/${images[2].id}" alt="Третий слайд">-->
-<#--                        </div>-->
-<#--                    </div>-->
-<#--                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
-<#--                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<#--                        <span class="sr-only">Previous</span>-->
-<#--                    </a>-->
-<#--                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
-<#--                        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<#--                        <span class="sr-only">Next</span>-->
-<#--                    </a>-->
-<#--                </div>-->
-                <b>Марка машины: ${car.brand}</b><br>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="/images/${images[0].id}" alt="Первый слайд">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/images/${images[1].id}" alt="Второй слайд">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/images/${images[2].id}" alt="Третий слайд">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <b style="margin-right: 5px;">Марка машины: ${car.brand}</b>
                 <b>Модель машины: ${car.model}</b><br>
+                <hr>
                 <#list currency as curr>
                     <#assign current_value_check=curr._current_value!"null"/>
                     <#if  current_value_check == true>
@@ -122,19 +123,24 @@
                         </#if>
                     </#if>
                 </#list>
+                <hr>
                 <b>Комплектация: ${car.equipment}</b><br>
                 <b>Краткое описание: ${car.description}</b><br>
-                <b>Год выпуска: ${car.year_of_manufacture}</b><br>
+                <br>
+                <hr>
+                <b>Год выпуска: ${car.year_of_manufacture}</b><br><br>
 
                 <#if  adminRole == false>
                     <!-- Кнопка-триггер модального окна -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="font-size: 22px;">
                         Купить
                     </button>
                 </#if>
                 <#if  adminRole == true>
                     <form action="/cars/delete/${car.id}/${user.id}" method="post">
-                        <input type="submit" value="Удалить машину">
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="font-size: 22px;">
+                            Удалить машину
+                        </button>
                     </form>
                 </#if>
             </div>

@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface CarsRepository extends JpaRepository<Cars, Long> {
     List<Cars> findCarsByBrand(String brand);
+    List<Cars> findByBrandAndModelAndPriceBetween(String brand, String model, int price_from, int price_to);
 }

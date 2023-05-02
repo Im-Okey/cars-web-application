@@ -28,8 +28,6 @@ public class CurrencyController {
             if (Objects.equals(variable.getValue(), selectedValue)) {
                 variable.set_current_value(true);
             }
-//            variable.setId(count);
-//            count += 1;
             currencyService.saveCurr(variable);
         }
 

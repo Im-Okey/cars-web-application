@@ -108,9 +108,35 @@
             <div class="service__body">
                 <div class="service__title">Машины</div>
 
-                <form action="/showroom/${user.id}" method="get">
-                    Поиск по названию: <input type="text" name="brand"><br>
-                    <input type="submit" value="поиск">
+                <form action="/showroom/${user.id}" method="get" style="margin-bottom: 20px;">
+                    <div class="form-group" style="display: flex">
+                        <input type="text" name="brand" class="form-control" aria-describedby="emailHelp" placeholder="Введите название машины" style="margin-right: 10px;">
+                        <input class="btn btn-primary" type="submit" value="Поиск">
+                    </div>
+                </form>
+                <form class="flex-curr" action="#" method="get" style="color: red">
+                    <select class="form-select" name="brand_car" id="brand_car" style="margin-right: 10px">
+                        <option value="">Выберите марку</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Lamborghini">Lamborghini</option>
+                        <option value="Mercedes">Mercedes</option>
+                        <option value="Geely">Geely</option>
+                        <option value="Volkswagen">Volkswagen</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Škoda">Škoda</option>
+                        <option value="Porsche">Porsche</option>
+                    </select>
+                    <select class="form-select" name="model_car" id="model_car" style="margin-right: 10px">
+                        <option value="">Выберите модель</option>
+                        <#list cars as car>
+                            <option value="${car.model}">${car.model}</option>
+                        </#list>
+                    </select>
+                    <input type="text" name="price_from" id="price_from" class="form-control" placeholder="Цена от" style="margin-right: 10px;">
+                    <input type="text" name="price_to" id="price_to" class="form-control" placeholder="Цена до" style="margin-right: 10px;">
+                    <input class="btn btn-primary" type="submit" value="Поиск">
                 </form>
                 <div class="service__row">
                     <#list cars as car>

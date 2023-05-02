@@ -54,21 +54,21 @@
     <div class="service" id="services">
         <div class="container">
             <div class="service__body" style="margin-top: 100px">
-                <form action="/showroom/profile/${user.id}/edit" method="post">
-                    E-mail: <input readonly type="text" value="${user.email}" name="email"><br><br>
-                    Имя: <input type="text" value="${user.password}" name="password"><br><br>
-                    Имя: <input type="text" value="${user.name}" name="name"><br><br>
-                    Фамилия: <input type="text" value="${user.surname}" name="surname"><br><br>
-                    Контактный телефон: <input type="text" placeholder="${user.phone}" name="phone"><br><br>
-                    Адрес: <input type="text" value="${user.address}" name="address"><br><br>
-                    Серия паспорта: <input type="text" value="${user.passport_serial}" name="passport_serial"><br><br>
-                    Номер паспорта: <input type="text" value="${user.passport_number}" name="passport_number"><br><br>
-                    <input type="submit" value="Редактировать профиль">
+                <form class="form-group" action="/showroom/profile/${user.id}/edit" method="post">
+                    E-mail: <input readonly type="text" class="form-control" value="${user.email}" name="email"><br><br>
+                    Имя: <input type="text" class="form-control" value="${user.password}" name="password"><br><br>
+                    Имя: <input type="text" class="form-control" value="${user.name}" name="name"><br><br>
+                    Фамилия: <input type="text" class="form-control" value="${user.surname}" name="surname"><br><br>
+                    Контактный телефон: <input type="text" class="form-control" placeholder="${user.phone}" name="phone"><br><br>
+                    Адрес: <input type="text" class="form-control" value="${user.address}" name="address"><br><br>
+                    Серия паспорта: <input type="text" class="form-control" value="${user.passport_serial}" name="passport_serial"><br><br>
+                    Номер паспорта: <input type="text" class="form-control" value="${user.passport_number}" name="passport_number"><br><br>
+                    <input class="btn btn-primary" type="submit" value="Редактировать профиль">
                 </form>
-                Дата последнего редактирования профиля: ${user.dateOfCreated}
+                Дата последнего редактирования профиля: ${user.dateOfCreated}<br>
             </div>
-            <form action="/history/${user.id}/${user.id}">
-                <button class="btn btn-outline-danger ms-1" style="text-decoration: none">История покупок</button>
+            <form action="/history/${user.id}/${user.id}" style="margin-left: 20px;margin-top: 10px;">
+                <button class="btn btn-outline-danger ms-1" style="text-decoration: none;">История покупок</button>
             </form>
         </div>
     </div>
