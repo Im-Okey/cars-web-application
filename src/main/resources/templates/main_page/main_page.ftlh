@@ -116,11 +116,11 @@
                 </form>
                 <form class="flex-curr" action="#" method="get" style="color: red">
                     <select class="form-select" name="brand_car" id="brand_car" style="margin-right: 10px">
-                        <option value="">Выберите марку</option>
+                        <option selected value="">Выберите марку</option>
                         <option value="BMW">BMW</option>
                         <option value="Audi">Audi</option>
                         <option value="Lamborghini">Lamborghini</option>
-                        <option value="Mercedes">Mercedes</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz</option>
                         <option value="Geely">Geely</option>
                         <option value="Volkswagen">Volkswagen</option>
                         <option value="Honda">Honda</option>
@@ -129,13 +129,18 @@
                         <option value="Porsche">Porsche</option>
                     </select>
                     <select class="form-select" name="model_car" id="model_car" style="margin-right: 10px">
-                        <option value="">Выберите модель</option>
-                        <#list cars as car>
+                        <option selected value="">Выберите модель</option>
+                        <#list brands as car>
                             <option value="${car.model}">${car.model}</option>
                         </#list>
                     </select>
                     <input type="text" name="price_from" id="price_from" class="form-control" placeholder="Цена от" style="margin-right: 10px;">
                     <input type="text" name="price_to" id="price_to" class="form-control" placeholder="Цена до" style="margin-right: 10px;">
+                    <select class="form-select" name="sort" id="sort" style="margin-right: 10px">
+                        <option value="">Сортировать по</option>
+                        <option value="ASC">По возрастанию</option>
+                        <option value="DESC">По убыванию</option>
+                    </select>
                     <input class="btn btn-primary" type="submit" value="Поиск">
                 </form>
                 <div class="service__row">

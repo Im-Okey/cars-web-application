@@ -56,7 +56,7 @@
             <div class="service__body" style="margin-top: 100px">
                 <form class="form-group" action="/showroom/profile/${user.id}/edit" method="post">
                     E-mail: <input readonly type="text" class="form-control" value="${user.email}" name="email"><br><br>
-                    Имя: <input type="text" class="form-control" value="${user.password}" name="password"><br><br>
+                    Пароль: <input type="text" class="form-control" value="${user.password}" name="password"><br><br>
                     Имя: <input type="text" class="form-control" value="${user.name}" name="name"><br><br>
                     Фамилия: <input type="text" class="form-control" value="${user.surname}" name="surname"><br><br>
                     Контактный телефон: <input type="text" class="form-control" placeholder="${user.phone}" name="phone"><br><br>

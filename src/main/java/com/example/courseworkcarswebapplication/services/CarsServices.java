@@ -5,6 +5,7 @@ import com.example.courseworkcarswebapplication.models.Image;
 import com.example.courseworkcarswebapplication.repositories.CarsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,11 +24,19 @@ public class CarsServices {
         if (brand.length() >= 1) return carsRepository.findCarsByBrand(brand);
         return  carsRepository.findAll();
     }
+    public List<Cars> sortedCars(String brand_Car, String model_car, String price_from, String price_to, String sort){
+        return carsRepository.findByBrandAndModelAndPriceBetween(brand_Car, model_car, Integer.parseInt(price_from),
+                Integer.parseInt(price_to), Sort.by(Sort.Direction.fromString(sort), "price"));
+    }
 
-    public List<Cars> filterCars(String brand_car, String model_car, String price_from, String price_to) {
+    public List<Cars> sortedCarsBrand(String brand_Car, String price_from, String price_to, String sort){
+        return carsRepository.findByBrandAndPriceBetween(brand_Car, Integer.parseInt(price_from),
+                Integer.parseInt(price_to), Sort.by(Sort.Direction.fromString(sort), "price"));
+    }
 
-        return carsRepository.findByBrandAndModelAndPriceBetween(brand_car, model_car,
-                Integer.parseInt(price_from), Integer.parseInt(price_to));
+    public List<Cars> sortedCarsPrice(String price_from, String price_to, String sort){
+        return carsRepository.findByPriceBetween(Integer.parseInt(price_from),
+                Integer.parseInt(price_to), Sort.by(Sort.Direction.fromString(sort), "price"));
     }
 
     public Cars saveCar(Cars car, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {

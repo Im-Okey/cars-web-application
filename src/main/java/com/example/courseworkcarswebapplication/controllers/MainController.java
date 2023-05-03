@@ -23,13 +23,27 @@ public class MainController {
 
     @GetMapping("/showroom/{id}")
     public String get_main_page(@RequestParam(name = "brand", required = false) String brand, @PathVariable Long id, Model model,
-                                @RequestParam(name = "brand_car", required = false) String brand_car,
-                                @RequestParam(name = "model_car", required = false) String model_car,
-                                @RequestParam(name = "price_from", required = false) String price_from,
-                                @RequestParam(name = "price_to", required = false) String price_to) {
-        model.addAttribute("cars", carsServices.findCars(brand));
+                                @RequestParam(name = "brand_car", required = false, defaultValue = "") String brand_car,
+                                @RequestParam(name = "model_car", required = false, defaultValue = "") String model_car,
+                                @RequestParam(name = "price_from", required = false, defaultValue = "0") String price_from,
+                                @RequestParam(name = "price_to", required = false, defaultValue = "999999999") String price_to,
+                                @RequestParam(name = "sort", required = false, defaultValue = "DESC") String sort) {
+        model.addAttribute("brands", carsServices.findCars(brand));
+        if (!brand_car.equals("") && !model_car.equals("")) {
+            model.addAttribute("cars", carsServices.sortedCars(brand_car, model_car, price_from, price_to, sort));
+        }
+        else if (!brand_car.equals("") && model_car.equals("")) {
+            model.addAttribute("cars", carsServices.sortedCarsBrand(brand_car, price_from, price_to, sort));
+        }
+        else if (brand_car.equals("") && model_car.equals("")) {
+            model.addAttribute("cars", carsServices.sortedCarsPrice(price_from, price_to, sort));
+        }
+        else{
+            model.addAttribute("cars", carsServices.findCars(brand));
+        }
         model.addAttribute("user", userService.findById(id));
         model.addAttribute("currency", currencyService.findAll());
         return "main_page/main_page";
     }
+
 }

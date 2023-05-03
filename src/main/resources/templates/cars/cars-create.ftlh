@@ -64,7 +64,7 @@
                     Превое фото: <input type="file" name="file1"><br><br>
                     Второе фото: <input type="file" name="file2"><br><br>
                     Третье фото: <input type="file" name="file3"><br><br>
-                    <input type="submit" value="Добавить машину">
+                    <input class="btn btn-primary" type="submit" value="Добавить машину">
                 </form>
             </div>
         </div>
